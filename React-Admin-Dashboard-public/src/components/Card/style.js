@@ -1,0 +1,1 @@
+export const buttonstyle = { width: "30%", display: "flex", flexDirection: "column", backgroundColor: "orange", padding: 0, borderRadius: "5px" }

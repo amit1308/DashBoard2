@@ -1,0 +1,198 @@
+.CompactCard {
+  display: flex;
+  border-radius: 0.7rem;
+  color: rgb(209, 231, 11);
+  padding: 1rem;
+  position: relative;
+  cursor: pointer;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 12rem;
+}
+
+.CompactCard1{
+  display: flex;
+  border-radius: 0.7rem;
+  color: rgb(209, 231, 11);
+  padding: 1rem;
+  position: relative; 
+  cursor: pointer;
+  flex-direction: column;
+  justify-content: space-between;
+  /* width:50%; */
+  height: 15.5rem;
+
+}
+/* .CompactCardprogress {
+  display: flex;
+  flex: 1;
+  border-radius: 0.7rem;
+  color: rgb(209, 231, 11);
+  padding: 1rem;
+  margin: 1rem;
+  position: relative;
+  cursor: pointer;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 50%;
+ 
+} */
+.CompactCard:hover {
+  box-shadow: none !important;
+}
+
+.cardSize {
+  width: 45vw;
+}
+.cardSize1{
+  width: 30vw;
+
+}
+
+.radialAndDetail {
+  display: flex;
+  flex-direction: row;
+}
+
+.dataAndphase {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: large;
+}
+
+.Progressbar {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  /* padding-top: 20px; */
+}
+
+.btns {
+  display: flex;
+  flex-grow: 3;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  padding: .3rem;
+}
+.graphBtns {
+  display: flex;
+  /* flex-grow: 3; */
+  flex-wrap: wrap;
+  /* gap: 10px; */
+  /* justify-content: center; */
+  padding: .3rem;
+
+}
+
+.color-blue {
+  background: linear-gradient(180deg, #2b2a2a 0%, #413e3e 100%);
+  box-shadow: 0px 2px 2px 1px #c4c2c5;
+}
+
+.blockspan1 {
+ background-color: #9ACD32;
+  width: 100%;
+  height: 48%;
+  padding-Top: 10px;
+  border-Radius: 5px;
+  color: black;
+  font-Weight: bold;
+}
+.blockspan2{
+  display: inline-block;
+   width: 100%;
+    height: 3px;
+     background-Color: black;
+      margin-Bottom: 10px;
+}
+.blockspan3{
+  color:black;
+  font-weight: bold;
+}
+
+/* radial bar */
+.radialBar {
+  flex: 1 1;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: flex-end; */
+  /* gap: 1rem; */
+
+}
+
+.CircularProgressbar {
+  width: 4rem !important;
+  overflow: visible;
+  
+}
+
+/* .CircularProgressbar-path {
+  stroke: rgb(175, 20, 20) !important;
+  stroke-width: 12px !important;
+  filter: drop-shadow(2px 4px 6px white);
+} */
+
+
+/* .CircularProgressbar-trail {
+  display: none;
+} */
+
+.CircularProgressbar-text {
+  fill: white !important;
+}
+
+.radialBar>span {
+  font-size: 17px;
+  font-weight: bold;
+}
+
+/* sideDetail*/
+.detail {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+
+.detail>span:nth-child(2) {
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.detail>span:nth-child(3) {
+  font-size: 12px;
+}
+
+/* ExpandedCard */
+.ExpandedCard {
+  position: absolute;
+  width: 60%;
+  height: 70vh;
+  z-index: 9;
+  left: 13rem;
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  padding: 1rem;
+}
+
+.ExpandedCard>span:nth-of-type(1) {
+  color: white;
+  font-size: 26px;
+  font-weight: bold;
+  text-shadow: 0px 0px 15px white;
+}
+
+.ExpandedCard>span:nth-of-type(2) {
+  color: rgb(236, 236, 236);
+  font-size: 15px;
+}
+
+.chartContainer {
+  width: 70%;
+}
