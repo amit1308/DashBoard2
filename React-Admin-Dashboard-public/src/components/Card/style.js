@@ -1,1 +1,2 @@
 export const buttonstyle = { width: "30%", display: "flex", flexDirection: "column", backgroundColor: "orange", padding: 0, borderRadius: "5px" }
+export const buttonstyle1 = { width: "40%", display: "flex", flexDirection: "column", backgroundColor: "orange", padding: 0, borderRadius: "5px" }

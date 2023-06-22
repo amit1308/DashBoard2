@@ -41,7 +41,7 @@ function CompactCard({ param }) {
           <div>
             <h4>Room Temp.</h4>
           </div>
-          <div style={{ textAlign: "center" }}>
+          <div style={{marginTop:"-17%", textAlign: "center" }}>
             <h4>{param.RoomTemperature}</h4>
           </div>
         </div>
@@ -60,7 +60,7 @@ function CompactCard({ param }) {
           <div>
             <h4>Coil Temp.</h4>
           </div>
-          <div style={{ textAlign: "center" }}>
+          <div style={{ marginTop:"-17%",textAlign: "center" }}>
             <h4>{param.CoilTemperature}</h4>
           </div>
         </div>
@@ -77,9 +77,10 @@ function CompactCard({ param }) {
             // text={` ${param["Humidity(%)"]}%`}
           />
           <div>
-            <h4>Humidity</h4>
+          <h4>Humidity</h4>
           </div>
-          <div style={{ textAlign: "center" }}>
+          <div style={{marginTop:"-17%", textAlign: "center" }}>
+        
             <h4>{` ${param["Humidity(%)"]}%`}</h4>
           </div>
         </div>
@@ -87,7 +88,9 @@ function CompactCard({ param }) {
         <div>
           <CircularPro />
           <div style={{ textAlign: "center" }}>
-            <h4>By Pass</h4>
+            {/* <h4>By Pass</h4> */}
+            <p style={{color:"#072635"}}>.</p>
+            <p style={{color:"#072635"}}>.</p>
           </div>
           <div style={{ textAlign: "center" }}></div>
         </div>

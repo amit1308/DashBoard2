@@ -58,7 +58,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: large;
+  font-size: medium;
 }
 
 .Progressbar {
@@ -87,7 +87,7 @@
 }
 
 .color-blue {
-  background: linear-gradient(180deg, #2b2a2a 0%, #413e3e 100%);
+  background: linear-gradient(180deg, #04041d 0%, #072635 100%);
   box-shadow: 0px 2px 2px 1px #c4c2c5;
 }
 

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./Cards.css";
-import { cardsData } from "../../Data/Data";
+// import { cardsData } from "../../Data/Data";
 import axios from "axios";
 import Ph1Card from "../Card/Ph1Card";
 import Ph2Card from "../Card/Ph2Card";
@@ -8,22 +8,41 @@ import Ph3Card from "../Card/Ph3Card";
 import ProgressCard from "../Card/ProgressCard";
 import Heading from "../Heading/Heading";
 import Card from "../Card/Card";
+import { useSelector } from "react-redux";
 // import Graph from "../Card/Graph";
 
 const Cards = () => {
   const [toShow, setToShow] = useState([]);
+  const opti = useSelector((state) => {
+    console.log("Graph        O", state.gatewayOptimizer.OptimizerId);
+    return state.gatewayOptimizer.OptimizerId;
+  });
+
+  // useEffect(() => {
+  //   const getCharacters = async () => {
+  //     const response = await axios.get("http://localhost:5000/data");
+  //     setToShow(response.data);
+  //     // console.log("what is  ",response.data);
+  //   };
+  //   if(!opti)
+  //     getCharacters();
+
+  // }, [opti]);
 
   useEffect(() => {
     const getCharacters = async () => {
       const response = await axios.get("http://localhost:5000/data");
       setToShow(response.data);
+      // console.log("what is  ",response.data);
     };
-    getCharacters();
+   
+      getCharacters();
+
   }, []);
 
   async function dataopti(OptimizerId, GatewayId) {
     const response = await axios.post(
-      "http://16.170.208.48/getLatestData",{
+      "http://13.53.205.103/getLatestData",{
         GatewayId,
         OptimizerId,
       }
@@ -36,6 +55,8 @@ const Cards = () => {
   return (
     <div>
       <Heading dataopti={dataopti} />
+      {/* { (gate && opti)?<Cards /> : <h1>Please Select GatewayId and OptimizerId</h1>} */}
+      
       {toShow?.map((card, id) => {
         return (
           <div className="parentContainer" key={id}>

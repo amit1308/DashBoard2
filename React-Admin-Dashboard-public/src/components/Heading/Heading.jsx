@@ -7,10 +7,13 @@ import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import axios from "axios";
-
+import { useDispatch } from 'react-redux'
+import {updateOptimizer, updateGateway} from "../../features/gatewayOptimizerSlice"
 
 
 function Heading({ dataopti }) {
+  const dispatch = useDispatch()
+
   // const param = data ? data[0] : {};
   //   console.log(param);
   // console.log('DataOpti');
@@ -24,7 +27,7 @@ function Heading({ dataopti }) {
   const [gatewaysIds, setGatewayIds] = useState([]);
   useEffect(() => {
     async function allGateways() {
-      const response = await axios.get("http://16.170.208.48/allGateways");
+      const response = await axios.get("http://13.53.205.103/allGateways");
       setGatewayIds(response.data);
     }
     allGateways();
@@ -34,14 +37,15 @@ function Heading({ dataopti }) {
   const [optimizerIds, setOptimizerIds] = useState([]);
   async function optimizer(e) {
     setSelectedGateway(e.target.value);
-    const response = await axios.post("http://16.170.208.48/getOptimizer", {
+    const response = await axios.post("http://13.53.205.103/getOptimizer", {
       GatewayId: e.target.value,
     });
     setOptimizerIds(response.data[0].OptimizerIds);
     setSelectedOptimizer("");
+    dispatch(updateGateway(e.target.value))
+    dispatch(updateOptimizer(''))
   }
-
-
+  
   // All the Latest data from selected optimizer and gateway id
   const [param, setParam] = useState({});
   async function getData(e) {
@@ -49,6 +53,7 @@ function Heading({ dataopti }) {
     const data = await dataopti(e.target.value, selectedGateway);
     console.log(data);
     setParam(data);
+    dispatch(updateOptimizer(e.target.value))
 
     // const graphData = await RecievedData(e.target.value,selectedGateway);
 

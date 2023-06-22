@@ -5,7 +5,7 @@ import "react-circular-progressbar/dist/styles.css";
 import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
 import { colors } from "@mui/material";
-import { buttonstyle } from "./style";
+import { buttonstyle, buttonstyle1 } from "./style";
 // parent Card
 
 const Card = ({ data }) => {
@@ -69,7 +69,7 @@ function CompactCard({ param }) {
                         </span>
 
                     </Button>
-                    <Button variant="contained" sx ={buttonstyle}>
+                    <Button variant="contained" sx ={buttonstyle1}>
 
                         <span className="blockspan1">
                             Power Factor
@@ -82,7 +82,7 @@ function CompactCard({ param }) {
 
                 {/* </Stack> */}
                 {/* <Stack spacing={2} direction="row" style={{ width: "100%", marginTop: "2%" }}> */}
-                    <Button variant="contained" sx ={buttonstyle}>
+                    <Button variant="contained" sx ={buttonstyle1}>
 
                         <span className="blockspan1">
                             Apparent Power
