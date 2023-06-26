@@ -18,31 +18,31 @@ const Cards = () => {
     return state.gatewayOptimizer.OptimizerId;
   });
 
-  // useEffect(() => {
-  //   const getCharacters = async () => {
-  //     const response = await axios.get("http://localhost:5000/data");
-  //     setToShow(response.data);
-  //     // console.log("what is  ",response.data);
-  //   };
-  //   if(!opti)
-  //     getCharacters();
-
-  // }, [opti]);
-
   useEffect(() => {
     const getCharacters = async () => {
       const response = await axios.get("http://localhost:5000/data");
       setToShow(response.data);
       // console.log("what is  ",response.data);
     };
-   
+    if(!opti)
       getCharacters();
 
-  }, []);
+  }, [opti]);
+
+  // useEffect(() => {
+  //   const getCharacters = async () => {
+  //     const response = await axios.get("http://localhost:5000/data");
+  //     setToShow(response.data);
+  //     // console.log("what is  ",response.data);
+  //   };
+   
+  //     getCharacters();
+
+  // }, []);
 
   async function dataopti(OptimizerId, GatewayId) {
     const response = await axios.post(
-      "http://13.53.205.103/getLatestData",{
+      "http://44.211.198.14/getLatestData",{
         GatewayId,
         OptimizerId,
       }

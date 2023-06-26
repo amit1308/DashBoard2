@@ -196,3 +196,24 @@
 .chartContainer {
   width: 70%;
 }
+
+@media screen and (max-width: 1200px) {
+  .cardSize {
+    width: 150vw;
+  }
+  .cardSize1{
+    width: 140vw;
+  
+  }
+  .graphBtns {
+  display: flex;
+  /* flex-grow: 3; */
+  flex-wrap: wrap;
+  /* gap: 10px; */
+  /* justify-content: center; */
+  padding: .3rem;
+
+}
+ 
+  
+}

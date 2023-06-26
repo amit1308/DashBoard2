@@ -112,68 +112,68 @@ function Graph() {
 
   useEffect(() => {
     if(!opti || !gate){
-      // setData({
-      //   labels: [
-      //     "",
-      //     "",
-      //     "",
-      //     "",
-      //     "",
-      //     "",
-      //     "",
-      //     "",
-      //     "",
-      //     "",
-      //     "",
-      //     "",
-      //     "",
-      //     "",
-      //     "",
-      //     "",
-      //     "",
-      //     "",
-      //     "",
-      //     "",
-      //   ],
-      //   datasets: [
-      //     {
-      //       label: "Room Temp.",
-      //       data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-      //       backgroundColor: "tranparent",
-      //       borderColor: "green",
-      //       // tension:0.4,
-      //       fill: true,
-      //       pointStyle: false,
-      //       // pointBorderColor:'blue',
-      //       // pointBackgroundColor:'#fff',
-      //       showLine: true,
-      //     },
-      //     {
-      //       label: "Coil Temp.",
-      //       data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-      //       backgroundColor: "tranparent",
-      //       borderColor: "red",
-      //       // tension:0.4,
-      //       fill: false,
-      //       pointStyle: false,
-      //       // pointBorderColor:'blue',
-      //       // pointBackgroundColor:'#fff',
-      //       showLine: true,
-      //     },
-      //     {
-      //       label: "Humidity",
-      //       data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-      //       backgroundColor: "tranparent",
-      //       borderColor: "black",
-      //       // tension:0.4,
-      //       fill: false,
-      //       pointStyle: false,
-      //       // pointBorderColor:'blue',
-      //       // pointBackgroundColor:'#fff',
-      //       showLine: true,
-      //     },
-      //   ],
-      // })
+      setData({
+        labels: [
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+          "",
+        ],
+        datasets: [
+          {
+            label: "Room Temp.",
+            data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            backgroundColor: "tranparent",
+            borderColor: "green",
+            // tension:0.4,
+            fill: true,
+            pointStyle: false,
+            // pointBorderColor:'blue',
+            // pointBackgroundColor:'#fff',
+            showLine: true,
+          },
+          {
+            label: "Coil Temp.",
+            data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            backgroundColor: "tranparent",
+            borderColor: "red",
+            // tension:0.4,
+            fill: false,
+            pointStyle: false,
+            // pointBorderColor:'blue',
+            // pointBackgroundColor:'#fff',
+            showLine: true,
+          },
+          {
+            label: "Humidity",
+            data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            backgroundColor: "tranparent",
+            borderColor: "black",
+            // tension:0.4,
+            fill: false,
+            pointStyle: false,
+            // pointBorderColor:'blue',
+            // pointBackgroundColor:'#fff',
+            showLine: true,
+          },
+        ],
+      })
       return
     }
     const roomTemp = [];
@@ -181,7 +181,7 @@ function Graph() {
     const humidity = [];
     const labelss = [];
     const graphData = async () => {
-      const response = await axios.post("http://13.53.205.103/getGraphData", {
+      const response = await axios.post("http://44.211.198.14/getGraphData", {
         GatewayId: gate,
         OptimizerId: opti,
       });
@@ -237,8 +237,8 @@ function Graph() {
       console.log("what data   ", response.data);
     };
     graphData();
-  // }, [opti]);
-}, [opti,gate]);
+  }, [opti]);
+// }, [opti,gate]);
 
   // async function RecievedData (OptimizerId,GatewayId){
   //     const response = await axios.post(
