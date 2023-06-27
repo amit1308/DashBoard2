@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./Cards.css";
-// import { cardsData } from "../../Data/Data";
+import { cardsData } from "../../Data/Data";
 import axios from "axios";
 import Ph1Card from "../Card/Ph1Card";
 import Ph2Card from "../Card/Ph2Card";
@@ -12,20 +12,21 @@ import { useSelector } from "react-redux";
 // import Graph from "../Card/Graph";
 
 const Cards = () => {
-  const [toShow, setToShow] = useState([]);
+  const [toShow, setToShow] = useState(cardsData);
   const opti = useSelector((state) => {
     console.log("Graph        O", state.gatewayOptimizer.OptimizerId);
     return state.gatewayOptimizer.OptimizerId;
   });
 
   useEffect(() => {
-    const getCharacters = async () => {
-      const response = await axios.get("http://localhost:5000/data");
-      setToShow(response.data);
-      // console.log("what is  ",response.data);
-    };
+    // const getCharacters = async () => {
+    //   const response = await axios.get("http://localhost:1234/data");
+    //   setToShow(response.data);
+    //   // console.log("what is  ",response.data);
+    // };
     if(!opti)
-      getCharacters();
+      setToShow(cardsData)
+      // getCharacters();
 
   }, [opti]);
 
