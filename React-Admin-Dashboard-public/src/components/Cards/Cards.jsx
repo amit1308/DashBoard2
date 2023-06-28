@@ -55,6 +55,7 @@ const Cards = () => {
 
   return (
     <div>
+      
       <Heading dataopti={dataopti} />
       {/* { (gate && opti)?<Cards /> : <h1>Please Select GatewayId and OptimizerId</h1>} */}
       

@@ -23,6 +23,9 @@
   height: 15.5rem;
 
 }
+.graph{
+  width:75%;
+}
 /* .CompactCardprogress {
   display: flex;
   flex: 1;
@@ -214,6 +217,14 @@
   padding: .3rem;
 
 }
- 
-  
 }
+
+@media screen and (max-width: 800px) {
+  .CompactCard {
+   
+    margin-right: 4%;
+  }
+ 
+}
+
+

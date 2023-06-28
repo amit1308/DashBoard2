@@ -24,44 +24,10 @@ function CompactCard({ param }) {
                 <p>Compressor Data</p>
             </div> */}
 
-            <div className="graphBtns">
+        
         <Graph />
 
-                {/* <Button variant="contained"   sx ={buttonstyle}  >
-
-                    <span  className="blockspan1" >
-                    Room Temperature
-                    </span>
-                    <span className="blockspan2"></span>
-                    <span className="blockspan3">
-                    {`${param['RoomTemperature']}`}
-                    </span>
-
-                </Button>
-         
-                <Button variant="contained" sx ={buttonstyle}>
-
-                    <span className="blockspan1">
-                        Coil Temperature
-                    </span>
-                    <span className="blockspan2"></span>
-                    <span className="blockspan3">
-                        {`${param['CoilTemperature']}`}
-                    </span>
-                </Button>
-
-      
-                <Button variant="contained"  sx ={buttonstyle}>
-
-                    <span className="blockspan1">
-                        Humidity(%)
-                    </span>
-                    <span className="blockspan2"></span>
-                    <span className="blockspan3">
-                        {`${param['Humidity(%)']}`}
-                    </span>
-                </Button> */}
-            </div>
+           
         </div>
     );
 }

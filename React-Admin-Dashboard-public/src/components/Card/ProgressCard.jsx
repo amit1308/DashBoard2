@@ -2,9 +2,6 @@ import React from "react";
 import "./Card.css";
 import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
-import Stack from "@mui/material/Stack";
-import Button from "@mui/material/Button";
-import { green } from "@mui/material/colors";
 import CircularPro from "../CircularPro/CircularPro";
 // parent Card
 

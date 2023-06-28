@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Line } from "react-chartjs-2";
 import axios from "axios";
+import "./Card.css";
 // import Heading from "../Heading/Heading";
 import { useSelector } from "react-redux";
 import {
@@ -263,10 +264,34 @@ function Graph() {
   //     });
   //   console.log(arr);
   // }, []);
+
+  const[width, setWidth] = useState(
+    "75%"
+  )
+  console.log("Window size",window.innerHeight);
+  useEffect(()=>{
+    if(window.screen.width > 310 & window.screen.width<500){
+      setWidth("70%")
+    }
+    if(window.screen.width > 650 & window.screen.width<800){
+      setWidth("40%")
+    }
+    if(window.screen.width > 900 & window.screen.width<1050){
+      setWidth("30%")
+    }
+    if(window.screen.width > 1050 & window.screen.width<1680){
+      setWidth("70%")
+    }
+    if(window.screen.width > 1900 & window.screen.width<2600){
+      setWidth("38%")
+    }
+  },[])
+
   return (
-    <div className="App" style={{  width: "75%" }}>
+    <div className="App " style={{width:width}}>
+     
       {/* <Heading RecievedData={RecievedData} /> */}
-      <Line data={data}>Hello</Line>
+      <Line data={data}></Line>
     </div>
   );
 }
