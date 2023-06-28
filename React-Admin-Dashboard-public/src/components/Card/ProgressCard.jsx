@@ -86,7 +86,8 @@ function CompactCard({ param }) {
           <CircularPro />
           <div style={{ textAlign: "center" }}>
             {/* <h4>By Pass</h4> */}
-            <p style={{color:"#072635"}}>.</p>
+         
+            <h4 style={{color:"yellow"}}>By-Pass</h4>
             <p style={{color:"#072635"}}>.</p>
           </div>
           <div style={{ textAlign: "center" }}></div>

@@ -1,6 +1,7 @@
 import React, { useState,useEffect } from "react";
 import { useSelector } from "react-redux";
 import axios from "axios";
+import { FaBeer,FaPowerOff } from 'react-icons/fa';
 // import { motion } from "framer-motion";
 
 export default function CircularPro() {
@@ -41,7 +42,7 @@ export default function CircularPro() {
          onClick={sendData}
           style={{ backgroundColor: "#413e3e" , width:"100%", height:"100%",borderRadius:'50%',display:'flex', justifyContent:"center", alignItems:'center',boxShadow:"none" }}>
         {/* <button style={{ backgroundColor: "#413e3e" }}>By Pass</button> */}
-          <p>By-Pass</p>
+          <p><FaPowerOff /></p>
         </div>
       </div>
     </div>
