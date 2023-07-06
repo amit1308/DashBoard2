@@ -16,7 +16,7 @@ export default function CircularPro() {
   });
 
   async function sendData(){
-    const response = await axios.post("http://44.211.198.14/toggleOptimizer",{
+    const response = await axios.post("http://3.86.109.81:5000/toggleOptimizer",{
         GatewayId: "Amit",
         OptimizerId: "Hello",
         toggle:"false"
@@ -42,7 +42,7 @@ export default function CircularPro() {
          onClick={sendData}
           style={{ backgroundColor: "#413e3e" , width:"100%", height:"100%",borderRadius:'50%',display:'flex', justifyContent:"center", alignItems:'center',boxShadow:"none" }}>
         {/* <button style={{ backgroundColor: "#413e3e" }}>By Pass</button> */}
-          <p><FaPowerOff /></p>
+          <p style={{}}><FaPowerOff  size='50'/></p>
         </div>
       </div>
     </div>

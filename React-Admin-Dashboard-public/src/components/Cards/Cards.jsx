@@ -19,38 +19,25 @@ const Cards = () => {
   });
 
   useEffect(() => {
-    // const getCharacters = async () => {
-    //   const response = await axios.get("http://localhost:1234/data");
-    //   setToShow(response.data);
-    //   // console.log("what is  ",response.data);
-    // };
+  
     if(!opti)
       setToShow(cardsData)
-      // getCharacters();
+   
 
   }, [opti]);
 
-  // useEffect(() => {
-  //   const getCharacters = async () => {
-  //     const response = await axios.get("http://localhost:5000/data");
-  //     setToShow(response.data);
-  //     // console.log("what is  ",response.data);
-  //   };
-   
-  //     getCharacters();
 
-  // }, []);
 
   async function dataopti(OptimizerId, GatewayId) {
     const response = await axios.post(
-      "http://44.211.198.14/getLatestData",{
+      "http://3.86.109.81:5000/getLatestData",{
         GatewayId,
         OptimizerId,
       }
     );
     setToShow([response.data])
     return response.data;
-    // console.log(response.data);
+    console.log( "Ramsiya",response.data);
   }
 
   return (
