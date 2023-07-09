@@ -9,6 +9,7 @@ import ProgressCard from "../Card/ProgressCard";
 import Heading from "../Heading/Heading";
 import Card from "../Card/Card";
 import { useSelector } from "react-redux";
+// import _debounce from 'lodash/debounce';
 // import Graph from "../Card/Graph";
 
 const Cards = () => {
@@ -18,6 +19,8 @@ const Cards = () => {
     return state.gatewayOptimizer.OptimizerId;
   });
 
+  //debounce
+  // const debounceFn = useCallback(_debounce(dataopti, 1000), []);
   useEffect(() => {
   
     if(!opti)
@@ -29,15 +32,20 @@ const Cards = () => {
 
 
   async function dataopti(OptimizerId, GatewayId) {
-    const response = await axios.post(
+
+    const response = 
+      await axios.post(
       "http://3.86.109.81:5000/getLatestData",{
         GatewayId,
         OptimizerId,
       }
     );
     setToShow([response.data])
+
+
     return response.data;
-    console.log( "Ramsiya",response.data);
+    // console.log( "Ramsiya",response.data);
+   
   }
 
   return (

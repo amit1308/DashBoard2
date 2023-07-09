@@ -31,6 +31,7 @@ function Heading({ dataopti }) {
       setGatewayIds(response.data);
     }
     allGateways();
+    setInterval(allGateways,5000);
   }, []);
 
   // All optimizer Id correspoding to the selected gateway Id

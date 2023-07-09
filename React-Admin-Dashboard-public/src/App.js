@@ -1,6 +1,8 @@
+import { useEffect } from 'react';
 import './App.css'
 import Cards from './components/Cards/Cards.jsx';
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector,  } from "react-redux";
+import axios from 'axios';
 // import { getAllData } from './features/gatewayOptimizerSlice';
 // import { useSelector } from "react-redux";
 function App() {
@@ -21,6 +23,13 @@ const gate = useSelector((state) => {
 });
 
 
+// useEffect(()=>{
+//   async function hello(){
+//     const res = await axios.get('http://192.168.1.9:8081');
+//     console.log(res);
+//   }
+//   hello();
+// })
   return (
     <>
       <div className='main'>
