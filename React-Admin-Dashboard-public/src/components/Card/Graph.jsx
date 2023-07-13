@@ -27,7 +27,7 @@ ChartJS.register(
 );
 
 function Graph() {
-  // const [updatedOptimizer, setupdatedOptimizer] = useState([]);
+  const [updatedOptimizer, setupdatedOptimizer] = useState([]);
 
   // const getData = ()=>{
 
@@ -37,13 +37,13 @@ function Graph() {
   //     console.log("what is ",response);
   //     setupdatedOptimizer(response);
   //   })
-  // }
+  // }  
 
   const gate = useSelector((state) => {
     // console.log("Graph        G", state.gatewayOptimizer.GatewayId);
     return state.gatewayOptimizer.GatewayId;
   });
-
+  
   const opti = useSelector((state) => {
     // console.log("Graph        O", state.gatewayOptimizer.OptimizerId);
     return state.gatewayOptimizer.OptimizerId;
@@ -112,8 +112,12 @@ function Graph() {
   });
 
   useEffect(() => {
+<<<<<<< HEAD
 
     if (!opti || !gate) {
+=======
+    if(!opti || !gate){
+>>>>>>> parent of 6597f6a (Graph debounce)
       setData({
         labels: [
           "",
@@ -175,14 +179,15 @@ function Graph() {
             showLine: true,
           },
         ],
-      });
-      return;
+      })
+      return
     }
     const roomTemp = [];
     const coilTemp = [];
     const humidity = [];
     const labelss = [];
     const graphData = async () => {
+<<<<<<< HEAD
       const response = await axios.post(
         "http://44.202.86.124:5000/getGraphData",
         {
@@ -191,6 +196,13 @@ function Graph() {
         }
       );
       // setupdatedOptimizer(response.data);
+=======
+      const response = await axios.post("http://3.86.109.81:5000/getGraphData", {
+        GatewayId: gate,
+        OptimizerId: opti,
+      });
+      setupdatedOptimizer(response.data);
+>>>>>>> parent of 6597f6a (Graph debounce)
       response.data.map((item, index) => {
         roomTemp.push(item.RoomTemperature);
         coilTemp.push(item.CoilTemperature);
@@ -239,12 +251,9 @@ function Graph() {
           },
         ],
       });
-       roomTemp.length = 0;
-       coilTemp.length = 0;
-       humidity.length = 0;
-       labelss.length = 0;
       console.log("what data   ", response.data);
     };
+<<<<<<< HEAD
     graphData()
 
     // function debounce(funcn, time) {
@@ -260,8 +269,11 @@ function Graph() {
     // debounce(graphData, 5000)();
    
 
+=======
+    graphData();
+>>>>>>> parent of 6597f6a (Graph debounce)
   }, [opti]);
-  // }, [opti,gate]);
+// }, [opti,gate]);
 
   // async function RecievedData (OptimizerId,GatewayId){
   //     const response = await axios.post(
@@ -287,29 +299,31 @@ function Graph() {
   //   console.log(arr);
   // }, []);
 
-  const [width, setWidth] = useState("75%");
-  console.log("Window size", window.innerHeight);
-  useEffect(() => {
-    if ((window.screen.width > 310) & (window.screen.width < 500)) {
-      setWidth("70%");
+  const[width, setWidth] = useState(
+    "75%"
+  )
+  console.log("Window size",window.innerHeight);
+  useEffect(()=>{
+    if(window.screen.width > 310 & window.screen.width<500){
+      setWidth("70%")
     }
-    if ((window.screen.width > 650) & (window.screen.width < 800)) {
-      setWidth("40%");
+    if(window.screen.width > 650 & window.screen.width<800){
+      setWidth("40%")
     }
-    if ((window.screen.width > 900) & (window.screen.width < 1050)) {
-      setWidth("30%");
+    if(window.screen.width > 900 & window.screen.width<1050){
+      setWidth("30%")
     }
-    if ((window.screen.width > 1050) & (window.screen.width < 1680)) {
-      setWidth("70%");
+    if(window.screen.width > 1050 & window.screen.width<1680){
+      setWidth("70%")
     }
-    if ((window.screen.width > 1900) & (window.screen.width < 2600)) {
-      setWidth("38%");
+    if(window.screen.width > 1900 & window.screen.width<2600){
+      setWidth("38%")
     }
-  }, []);
-
+  },[])
 
   return (
-    <div className="App " style={{ width: width }}>
+    <div className="App " style={{width:width}}>
+     
       {/* <Heading RecievedData={RecievedData} /> */}
       <Line data={data}></Line>
     </div>

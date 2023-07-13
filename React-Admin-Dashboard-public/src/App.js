@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { useEffect,useState } from 'react';
 import './App.css'
 import Cards from './components/Cards/Cards.jsx';
@@ -8,6 +9,13 @@ import { useDispatch } from 'react-redux'
 // import { updateClient } from './features/gatewayOptimizerSlice';
 
 
+=======
+import './App.css'
+import Cards from './components/Cards/Cards.jsx';
+import { useSelector, useDispatch } from "react-redux";
+// import { getAllData } from './features/gatewayOptimizerSlice';
+// import { useSelector } from "react-redux";
+>>>>>>> parent of 6597f6a (Graph debounce)
 function App() {
 // console.log(getAllData);
 //   const dispatch = useDispatch();
