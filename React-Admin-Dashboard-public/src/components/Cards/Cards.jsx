@@ -9,10 +9,6 @@ import ProgressCard from "../Card/ProgressCard";
 import Heading from "../Heading/Heading";
 import Card from "../Card/Card";
 import { useSelector } from "react-redux";
-<<<<<<< HEAD
-
-=======
->>>>>>> parent of 6597f6a (Graph debounce)
 // import Graph from "../Card/Graph";
 
 const Cards = () => {
@@ -22,33 +18,6 @@ const Cards = () => {
     return state.gatewayOptimizer.OptimizerId;
   });
 
-<<<<<<< HEAD
-  // const client = useSelector((state)=>{
-  //   console.log("client connect", state.gatewayOptimizer.client); 
-  //   return state.gatewayOptimizer.client;
-  // })
-
-  // useEffect(() => {
-   
-  //   if(client) {
-  //     client.subscribe("myTopic", (err) => {
-  //       if (err) { 
-  //         console.log("Error", err);
-  //       } else {
-  //         console.log("Subscribed myTopic");
-  //       }
-  //     })
-  //     client.on("message", (topic, message) => {
-  //         setText(prev=>[...prev,message.toString()])
-  //       // console.log(topic, message.toString());
-  //     })
-  //     console.log(client);
-  //   }
-  // }, [client])
-
-
-=======
->>>>>>> parent of 6597f6a (Graph debounce)
   useEffect(() => {
   
     if(!opti)
@@ -60,15 +29,8 @@ const Cards = () => {
 
 
   async function dataopti(OptimizerId, GatewayId) {
-<<<<<<< HEAD
-
-    const response = 
-      await axios.post(
-      "http://44.202.86.124:5000/getLatestData",{
-=======
     const response = await axios.post(
-      "http://3.86.109.81:5000/getLatestData",{
->>>>>>> parent of 6597f6a (Graph debounce)
+      "http://44.202.86.124:5000/getLatestData",{
         GatewayId,
         OptimizerId,
       }

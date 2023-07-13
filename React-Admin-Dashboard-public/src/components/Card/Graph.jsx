@@ -112,12 +112,7 @@ function Graph() {
   });
 
   useEffect(() => {
-<<<<<<< HEAD
-
-    if (!opti || !gate) {
-=======
     if(!opti || !gate){
->>>>>>> parent of 6597f6a (Graph debounce)
       setData({
         labels: [
           "",
@@ -187,22 +182,11 @@ function Graph() {
     const humidity = [];
     const labelss = [];
     const graphData = async () => {
-<<<<<<< HEAD
-      const response = await axios.post(
-        "http://44.202.86.124:5000/getGraphData",
-        {
-          GatewayId: gate,
-          OptimizerId: opti,
-        }
-      );
-      // setupdatedOptimizer(response.data);
-=======
-      const response = await axios.post("http://3.86.109.81:5000/getGraphData", {
+      const response = await axios.post("http://44.202.86.124:5000/getGraphData", {
         GatewayId: gate,
         OptimizerId: opti,
       });
       setupdatedOptimizer(response.data);
->>>>>>> parent of 6597f6a (Graph debounce)
       response.data.map((item, index) => {
         roomTemp.push(item.RoomTemperature);
         coilTemp.push(item.CoilTemperature);
@@ -253,25 +237,7 @@ function Graph() {
       });
       console.log("what data   ", response.data);
     };
-<<<<<<< HEAD
-    graphData()
-
-    // function debounce(funcn, time) {
-    //   let timer= null;
-    //   return ()=>{
-    //     console.log("AmitK")
-    //     if (timer !== null) {
-    //       clearTimeout(timer);
-    //     }
-    //     timer = setTimeout(funcn,time);
-    //   }
-    // }
-    // debounce(graphData, 5000)();
-   
-
-=======
     graphData();
->>>>>>> parent of 6597f6a (Graph debounce)
   }, [opti]);
 // }, [opti,gate]);
 
