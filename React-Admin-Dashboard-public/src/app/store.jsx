@@ -4,5 +4,7 @@ import gatewayOptimizerReducer from '../features/gatewayOptimizerSlice'
 export const store = configureStore({
   reducer: {
     gatewayOptimizer: gatewayOptimizerReducer,
+
   },
+
 })

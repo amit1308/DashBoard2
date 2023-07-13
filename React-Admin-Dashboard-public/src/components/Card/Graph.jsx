@@ -40,12 +40,12 @@ function Graph() {
   // }
 
   const gate = useSelector((state) => {
-    console.log("Graph        G", state.gatewayOptimizer.GatewayId);
+    // console.log("Graph        G", state.gatewayOptimizer.GatewayId);
     return state.gatewayOptimizer.GatewayId;
   });
 
   const opti = useSelector((state) => {
-    console.log("Graph        O", state.gatewayOptimizer.OptimizerId);
+    // console.log("Graph        O", state.gatewayOptimizer.OptimizerId);
     return state.gatewayOptimizer.OptimizerId;
   });
   const [data, setData] = useState({
@@ -112,6 +112,7 @@ function Graph() {
   });
 
   useEffect(() => {
+
     if (!opti || !gate) {
       setData({
         labels: [
@@ -183,7 +184,7 @@ function Graph() {
     const labelss = [];
     const graphData = async () => {
       const response = await axios.post(
-        "http://3.86.109.81:5000/getGraphData",
+        "http://44.202.86.124:5000/getGraphData",
         {
           GatewayId: gate,
           OptimizerId: opti,
@@ -245,7 +246,7 @@ function Graph() {
       console.log("what data   ", response.data);
     };
     graphData()
-    setInterval(graphData, 5000);
+
     // function debounce(funcn, time) {
     //   let timer= null;
     //   return ()=>{

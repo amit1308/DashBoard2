@@ -9,7 +9,7 @@ import ProgressCard from "../Card/ProgressCard";
 import Heading from "../Heading/Heading";
 import Card from "../Card/Card";
 import { useSelector } from "react-redux";
-// import _debounce from 'lodash/debounce';
+
 // import Graph from "../Card/Graph";
 
 const Cards = () => {
@@ -19,8 +19,30 @@ const Cards = () => {
     return state.gatewayOptimizer.OptimizerId;
   });
 
-  //debounce
-  // const debounceFn = useCallback(_debounce(dataopti, 1000), []);
+  // const client = useSelector((state)=>{
+  //   console.log("client connect", state.gatewayOptimizer.client); 
+  //   return state.gatewayOptimizer.client;
+  // })
+
+  // useEffect(() => {
+   
+  //   if(client) {
+  //     client.subscribe("myTopic", (err) => {
+  //       if (err) { 
+  //         console.log("Error", err);
+  //       } else {
+  //         console.log("Subscribed myTopic");
+  //       }
+  //     })
+  //     client.on("message", (topic, message) => {
+  //         setText(prev=>[...prev,message.toString()])
+  //       // console.log(topic, message.toString());
+  //     })
+  //     console.log(client);
+  //   }
+  // }, [client])
+
+
   useEffect(() => {
   
     if(!opti)
@@ -35,7 +57,7 @@ const Cards = () => {
 
     const response = 
       await axios.post(
-      "http://3.86.109.81:5000/getLatestData",{
+      "http://44.202.86.124:5000/getLatestData",{
         GatewayId,
         OptimizerId,
       }

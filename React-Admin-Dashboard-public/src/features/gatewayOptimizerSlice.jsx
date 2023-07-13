@@ -2,8 +2,10 @@ import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
   GatewayId:"",
-  OptimizerId:""
+  OptimizerId:"",
+  client:null
 }
+
 
 export const gatewayOptimizerSlice = createSlice({
   name: 'gatewayOpti',
@@ -15,10 +17,16 @@ export const gatewayOptimizerSlice = createSlice({
     updateOptimizer:(state,action)=>{
       state.OptimizerId = action.payload;
     }
+    // ,
+    // updateClient:(state,action)=>{
+    //   state.client = action.payload;
+    // }
   },
 })
  
 // Action creators are generated for each case reducer function
-export const { updateGateway, updateOptimizer } = gatewayOptimizerSlice.actions
+export const { updateGateway, updateOptimizer,
+  // updateClient
+ } = gatewayOptimizerSlice.actions
 
 export default gatewayOptimizerSlice.reducer;

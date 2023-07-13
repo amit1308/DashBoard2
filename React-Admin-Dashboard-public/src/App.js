@@ -1,10 +1,13 @@
-import { useEffect } from 'react';
+import { useEffect,useState } from 'react';
 import './App.css'
 import Cards from './components/Cards/Cards.jsx';
 import { useSelector,  } from "react-redux";
-import axios from 'axios';
-// import { getAllData } from './features/gatewayOptimizerSlice';
-// import { useSelector } from "react-redux";
+import { useDispatch } from 'react-redux'
+// import axios from 'axios';
+// import * as mqtt from 'mqtt';
+// import { updateClient } from './features/gatewayOptimizerSlice';
+
+
 function App() {
 // console.log(getAllData);
 //   const dispatch = useDispatch();
@@ -12,6 +15,42 @@ function App() {
 //     console.log("../state",state.gitUser);
 //     return state.app;
 //   })
+// const [client, setClient] = useState(null);
+// const [texts, setText] = useState([])
+
+// useDispatch()(updateClient(client)); 
+
+// useEffect(() => {
+//   if (!client) {
+//     const localclient = mqtt.connect("mqtt://localhost:1884");
+//     localclient.on("connect", () => {
+//       console.log("Connect");
+      
+//     }) 
+//     setClient(localclient);
+//   }
+//   else {
+//     client.subscribe("myTopic", (err) => {
+//       if (err) { 
+//         console.log("Error", err);
+//       } else {
+//         console.log("Subscribed myTopic");
+//       }
+//     })
+//     // client.on("message", (topic, message) => {
+//       //   setText(prev=>[...prev,message.toString()])
+//     //   // console.log(topic, message.toString());
+//     // })
+//     // console.log(client);
+//   }
+// }, [client])
+// function publishSomething() {
+//   if (client && client.connected) {
+//     client.publish("myTopic", "Message sent to the subscriber");
+//   } else {
+//     console.log("Not connected to mqtt");
+//   }
+// }
 
 const opti = useSelector((state) => {
   console.log("Graph        O", state.gatewayOptimizer.OptimizerId);
@@ -23,13 +62,6 @@ const gate = useSelector((state) => {
 });
 
 
-// useEffect(()=>{
-//   async function hello(){
-//     const res = await axios.get('http://192.168.1.9:8081');
-//     console.log(res);
-//   }
-//   hello();
-// })
   return (
     <>
       <div className='main'>
@@ -37,6 +69,7 @@ const gate = useSelector((state) => {
         {/* <button onClick={()=>dispatch(getAllData())}>get github users</button> */}
       </div>
     </>
+ 
   );
 }
 

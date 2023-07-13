@@ -7,8 +7,9 @@ import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import axios from "axios";
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import {updateOptimizer, updateGateway} from "../../features/gatewayOptimizerSlice"
+
 
 
 function Heading({ dataopti }) {
@@ -25,9 +26,33 @@ function Heading({ dataopti }) {
   // all gateways Id
   const [selectedGateway, setSelectedGateway] = useState("");
   const [gatewaysIds, setGatewayIds] = useState([]);
+
+  // const client = useSelector((state)=>{
+  //   console.log("client connect", state.gatewayOptimizer.client); 
+  //   return state.gatewayOptimizer.client;
+  // })
+
+  // useEffect(() => {
+   
+  //   if(client) {
+  //     client.subscribe("myTopic", (err) => {
+  //       if (err) { 
+  //         console.log("Error", err);
+  //       } else {
+  //         console.log("Subscribed myTopic");
+  //       }
+  //     })
+  //     client.on("message", (topic, message) => {
+  //         // setText(prev=>[...prev,message.toString()])
+  //       console.log(topic, message.toString());
+  //     })
+  //     console.log(client);
+  //   }
+  // }, [client])
+
   useEffect(() => {
     async function allGateways() {
-      const response = await axios.get("http://3.86.109.81:5000/allGateways");
+      const response = await axios.get("http://44.202.86.124:5000/allGateways");
       setGatewayIds(response.data);
     }
     allGateways();
@@ -38,7 +63,7 @@ function Heading({ dataopti }) {
   const [optimizerIds, setOptimizerIds] = useState([]);
   async function optimizer(e) {
     setSelectedGateway(e.target.value);
-    const response = await axios.post("http://3.86.109.81:5000/getOptimizer", {
+    const response = await axios.post("http://44.202.86.124:5000/getOptimizer", {
       GatewayId: e.target.value,
     });
     setOptimizerIds(response.data[0].OptimizerIds);
