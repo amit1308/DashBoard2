@@ -26,24 +26,14 @@ export default function CircularPro() {
 
   return (
     <div>
-      <div
-        style={{
-          width: "90px",
-          height: "90px",
-          border: "solid red 10px",
-          borderRadius: "50%",
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
+    
         <div
 
          onClick={sendData}
-          style={{ backgroundColor: "#413e3e" , width:"100%", height:"100%",borderRadius:'50%',display:'flex', justifyContent:"center", alignItems:'center',boxShadow:"none" }}>
-        {/* <button style={{ backgroundColor: "#413e3e" }}>By Pass</button> */}
-          <p style={{}}><FaPowerOff  size='50'/></p>
-        </div>
+          style={{ backgroundColor: "#40b9d6" , width:"190%", height:"100%",borderRadius:'50%',display:'flex', justifyContent:"center", alignItems:'center',boxShadow:"none" }}>
+
+          <p ><FaPowerOff  size='35'/></p>
+      
       </div>
     </div>
   );

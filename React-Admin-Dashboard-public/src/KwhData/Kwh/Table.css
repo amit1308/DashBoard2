@@ -1,0 +1,94 @@
+
+.center {
+  height: 100%;
+}
+.center {
+  margin: 0;
+  background: -webkit-linear-gradient(45deg,  #7b5396);
+  font-family: sans-serif;
+  font-weight: 100;
+  color: black;
+}
+
+.containertable {
+  position: absolute;
+  top: 53%;
+  left: 63%;
+  border-radius: 20px;
+  max-height: 600px;
+  /* overflow-y: scroll; */
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  background: linear-gradient(180deg, #e9feef 0%, #628adade 100%);
+
+}
+table {
+  width: 800px;
+  height: 500px;
+  /* border-collapse: collapse; */
+  overflow: hidden;
+  table-layout: fixed;
+  border-radius: 20px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+th,
+td {
+  padding: 15px;
+  background-color: rgba(255, 255, 255, 0.151);
+  color: black;
+ 
+}
+th {
+  text-align: left;
+}
+thead th {
+  background-color: #55608f;
+}
+tbody tr:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+tbody td {
+  position: relative;
+  font-family: DigitalFont;
+  font-weight:700;
+  font-size: 25px;
+}
+tbody td:hover:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -9999px;
+  bottom: -9999px;
+  background-color: rgba(255, 255, 255, 0.2);
+  z-index: -1;
+}
+.header {
+  color: aliceblue;
+}
+.sticky-table {
+  width: 900px;
+  height: 500px;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+.sticky-table th {
+  position: sticky;
+  top: 0;
+  padding: 10px;
+  text-align: left;
+  font-weight: bold;
+}
+
+.sticky-table tbody {
+  display: block;
+  max-height: 70vh; 
+  overflow-y: auto;
+}
+
+.sticky-table tr {
+  display: table;
+  width: 100%;
+  table-layout: fixed;
+}

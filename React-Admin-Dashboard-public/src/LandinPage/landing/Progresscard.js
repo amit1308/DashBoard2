@@ -1,8 +1,8 @@
 import React from "react";
-import "./Card.css";
+import "./Landing.css";
 import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
-import CircularPro from "../CircularPro/CircularPro";
+// import CircularPro from "../CircularPro/CircularPro";
 // parent Card
 
 const Card = ({ data }) => {
@@ -17,84 +17,88 @@ const Card = ({ data }) => {
 function CompactCard({ param }) {
   // const Png = icons[param.id];
   return (
-    <div className="CompactCard color-blue">
-      <div className="dataAndphase">
-        <p>Compressor Data</p>
-      </div>
-      <div className="Progressbar">
+    <div className="">
+     
+      <div className="Progressbar2">
+        <div     style={{display:'flex',flexDirection:"row",}}>
         <div>
           <CircularProgressbar
             strokeWidth={20}
             styles={buildStyles({
               textColor: "red",
-              pathColor: "red",
-              trailColor: "white",
+              pathColor: "#6CE5E8",
+              trailColor: "#41B8D5",
+              
             })}
             // backgroundPadding={2}
             // background={true}
             value={param.RoomTemperature}
             // text={param.RoomTemperature}
           />
-          <div>
-            <h4>Room Temp.</h4>
+           <div>
+            <h4 >Average room  </h4>
+            <h4 style={{marginTop:"-15px"}} >temperature</h4>
           </div>
-          <div style={{marginTop:"-17%", textAlign: "center" }}>
+          </div>
+         
+          <div style={{ textAlign: "center" }}>
             <h4>{param.RoomTemperature}</h4>
           </div>
+        
         </div>
 
         <div>
+        <div style={{display:'flex',flexDirection:"row",}}>
           <CircularProgressbar
             strokeWidth={20}
             styles={buildStyles({
               textColor: "red",
-              pathColor: "violet",
-              trailColor: "white",
+              pathColor: "#6CE5E8",
+              trailColor: "#41B8D5",
             })}
             value={param.CoilTemperature}
             // text={param.CoilTemperature}
           />
-          <div>
-            <h4>Coil Temp.</h4>
-          </div>
-          <div style={{ marginTop:"-17%",textAlign: "center" }}>
+            <div style={{ paddingLeft:"15px",textAlign: "center" }}>
             <h4>{param.CoilTemperature}</h4>
+            </div>
+        
+        </div>
+    
+            <div>
+            <h4>Coil Temperature</h4>
+            <h4 style={{marginTop:"-15px",color:"white"}}>..</h4>
           </div>
         </div>
 
         <div>
+        <div style={{display:'flex',flexDirection:"row",}}>
           <CircularProgressbar
             strokeWidth={20}
             styles={buildStyles({
               // textColor: "red",
-              pathColor: "green",
-              trailColor: "white",
+              pathColor: "#6CE5E8",
+              trailColor: "#41B8D5",
             })}
             value={param["Humidity(%)"]}
             // text={` ${param["Humidity(%)"]}%`}
           />
-          <div>
-          <h4>Humidity</h4>
-          </div>
-          <div style={{marginTop:"-17%", textAlign: "center" }}>
+            <div style={{ paddingLeft:"15px", textAlign: "center" }}>
         
-            <h4>{` ${param["Humidity(%)"]}%`}</h4>
-          </div>
-        </div>
-
-        <div>
-          <CircularPro />
-          <div style={{ textAlign: "center" }}>
-            <h4 style={{color:"yellow"}}>By-Pass</h4>
-            <p style={{color:"#072635"}}>.</p>
-          </div>
-          <div style={{ textAlign: "center" }}></div>
-        </div>
-
+        <h4>{` ${param["Humidity(%)"]}%`}</h4>
       </div>
+          </div>
+        
+          <div>
+          <h4>Average room</h4>
+          <h4 style={{marginTop:"-15px"}}> humidity</h4>
+          </div>
+        </div>
 
+    
 
-
+      
+      </div>
     </div>
   );
 }

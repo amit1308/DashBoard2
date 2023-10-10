@@ -1,0 +1,52 @@
+/* Add this CSS to your stylesheet or component's CSS file */
+.layout-container {
+    height: 325px;
+    width: 350px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1px;
+    margin-left: 20px;
+   margin-top: 0px;
+   border-radius: 25px;
+  }
+  .speedometer .speed-value-text {
+    display: none;
+  }
+  
+  .top-row,
+  .bottom-row {
+    display: flex;
+    margin: auto;
+   
+    /* justify-content: center; */
+    /* justify-content: center; Center the speedometers horizontally within the row */
+  }
+  
+  .speedometer {
+    width: 150px; /* Adjust the width as needed */
+    height: 120px;
+    margin: -5px ; /* Adjust the margin between speedometers as needed */
+    position: relative;
+  }
+  
+  .middle-row .speedometer {
+    margin: -10px -25px; /* Adjust the margin for the middle row */
+  }
+  .speedometer-label{
+    margin:-32%;
+    padding-left: 65%;
+    font-size: 12px;
+
+  }
+  .speedometer1-label{
+    margin:-55%;
+    padding-left: 90%;
+    font-size: 15px;
+
+  }
+  .color-change {
+    background: linear-gradient(180deg, #e8ffee 0%, #d3e2fe 100%);
+    box-shadow: 0px 2px 2px 1px #c4c2c5;
+  }
+  

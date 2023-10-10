@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Line } from "react-chartjs-2";
 import axios from "axios";
-import "./Card.css";
+import "./Landing.css";
 // import Heading from "../Heading/Heading";
 import { useSelector } from "react-redux";
 import {
@@ -29,15 +29,7 @@ ChartJS.register(
 function Graph() {
   const [updatedOptimizer, setupdatedOptimizer] = useState([]);
 
-  // const getData = ()=>{
 
-  //   // const data = {opti,gate};
-  //   axios.post("http://13.53.205.103/getGraphData", data)
-  //   .then((response)=>{
-  //     console.log("what is ",response);
-  //     setupdatedOptimizer(response);
-  //   })
-  // }  
 
   const gate = useSelector((state) => {
     // console.log("Graph        G", state.gatewayOptimizer.GatewayId);
@@ -73,7 +65,7 @@ function Graph() {
     ],
     datasets: [
       {
-        label: "Room Temp.",
+        label:"Total Energy Consumption ",
         data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
         backgroundColor: "tranparent",
         borderColor: "green",
@@ -84,30 +76,7 @@ function Graph() {
         // pointBackgroundColor:'#fff',
         showLine: true,
       },
-      {
-        label: "Coil Temp.",
-        data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        backgroundColor: "tranparent",
-        borderColor: "red",
-        // tension:0.4,
-        fill: false,
-        pointStyle: false,
-        // pointBorderColor:'blue',
-        // pointBackgroundColor:'#fff',
-        showLine: true,
-      },
-      {
-        label: "Humidity",
-        data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-        backgroundColor: "tranparent",
-        borderColor: "black",
-        // tension:0.4,
-        fill: false,
-        pointStyle: false,
-        // pointBorderColor:'blue',
-        // pointBackgroundColor:'#fff',
-        showLine: true,
-      },
+    
     ],
   });
 
@@ -138,48 +107,26 @@ function Graph() {
         ],
         datasets: [
           {
-            label: "Room Temp.",
+            label:"Total Energy Consumption ",
+           
             data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
             backgroundColor: "tranparent",
             borderColor: "green",
             // tension:0.4,
             fill: true,
             pointStyle: false,
+            display:false,
             // pointBorderColor:'blue',
             // pointBackgroundColor:'#fff',
             showLine: true,
           },
-          {
-            label: "Coil Temp.",
-            data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-            backgroundColor: "tranparent",
-            borderColor: "red",
-            // tension:0.4,
-            fill: false,
-            pointStyle: false,
-            // pointBorderColor:'blue',
-            // pointBackgroundColor:'#fff',
-            showLine: true,
-          },
-          {
-            label: "Humidity",
-            data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-            backgroundColor: "tranparent",
-            borderColor: "black",
-            // tension:0.4,
-            fill: false,
-            pointStyle: false,
-            // pointBorderColor:'blue',
-            // pointBackgroundColor:'#fff',
-            showLine: true,
-          },
+        
         ],
       })
       return
     }
     const roomTemp = [];
-    const coilTemp = [];
-    const humidity = [];
+  
     const labelss = [];
     const graphData = async () => {
       const response = await axios.post("http://44.202.86.124:5000/getGraphData", {
@@ -190,8 +137,7 @@ function Graph() {
       console.log("radhe",response.data);
       response.data.map((item, index) => {
         roomTemp.push(item.RoomTemperature);
-        coilTemp.push(item.CoilTemperature);
-        humidity.push(item["Humidity(%)"]);
+      
         labelss.push("");
       });
 
@@ -199,7 +145,7 @@ function Graph() {
         labels: [...labelss],
         datasets: [
           {
-            label: "Room Temp.",
+            label:"Total Energy Consumption ",
             data: [...roomTemp],
             borderColor: "green",
             // backgroundColor: "tranparent",
@@ -210,61 +156,14 @@ function Graph() {
             // pointBackgroundColor:'#fff',
             showLine: true,
           },
-          {
-            label: "Coil Temp.",
-            data: [...coilTemp],
-            backgroundColor: "tranparent",
-            borderColor: "red",
-            tension: 0.4,
-            fill: false,
-            pointStyle: false,
-            // pointBorderColor:'blue',
-            // pointBackgroundColor:'#fff',
-            showLine: true,
-          },
-          {
-            label: "Humidity",
-            data: [...humidity],
-            backgroundColor: "tranparent",
-            borderColor: "yellow",
-            tension: 0.4,
-            fill: false,
-            pointStyle: false,
-            // pointBorderColor:'blue',
-            // pointBackgroundColor:'#fff',
-            showLine: true,
-          },
+      
         ],
       });
       console.log("what data   ", response.data);
     };
     graphData();
   }, [opti]);
-// }, [opti,gate]);
 
-  // async function RecievedData (OptimizerId,GatewayId){
-  //     const response = await axios.post(
-  //       "http://16.170.208.48/getGraphData",{
-  //         GatewayId,
-  //         OimizerIdpt,
-  //       }
-  //     );
-  //     console.log(response.data);
-  //   }
-
-  // useEffect(() => {
-  //   const arr = [];
-
-  //   fetch("https://dummyjson.com/carts")
-  //     .then((response) => response.json())
-  //     .then((json) => {
-  //       json.carts.map((item, index) => {
-  //         console.log("json", item.userId);
-  //         arr.push(item.userId);
-  //       });
-  //     });
-  //   console.log(arr);
-  // }, []);
 
   const[width, setWidth] = useState(
     "75%"
@@ -291,7 +190,7 @@ function Graph() {
   return (
     <div className="App " style={{width:width}}>
      
-      {/* <Heading RecievedData={RecievedData} /> */}
+    
       <Line data={data}></Line>
     </div>
   );
