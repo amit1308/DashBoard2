@@ -110,8 +110,8 @@ const Kwh = () => {
     async function allData() {
       try {
         const response = await axios.post(
-          // "http://44.202.86.124:5000/allGateways"
-          "http://localhost:5000/allGateways"
+          "http://3.106.217.161:5000/allGateways"
+          // "http://localhost:5000/allGateways"
         );
         setDashboardData(response.data);
         console.log(response.data, "allData");
@@ -162,8 +162,8 @@ const Kwh = () => {
     console.log(endDate, "end");
 
     const response = await axios.post(
-      // "http://44.202.86.124:5000/getDataKwh"
-      "http://localhost:5000/getDataKwh",
+      "http://3.106.217.161:5000/getDataKwh",
+      // "http://localhost:5000/getDataKwh",
       {
         Zone: selectedZone,
         pageNumber: "0",
@@ -200,7 +200,7 @@ const Kwh = () => {
 
   async function dataopti(OptimizerId, GatewayId) {
     const response = await axios.post(
-      "http://44.202.86.124:5000/getLatestData",
+      "http://3.106.217.161:5000/getLatestData",
       {
         GatewayId,
         OptimizerId,

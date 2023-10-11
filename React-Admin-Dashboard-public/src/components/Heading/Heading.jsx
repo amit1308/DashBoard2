@@ -43,7 +43,7 @@ function Heading({ dataopti }) {
   async function optimizer(e) {
     setSelectedGateway(e.target.value);
     const response = await axios.post(
-      "http://44.202.86.124:5000/getOptimizer",
+      "http://3.106.217.161:5000/getOptimizer",
       {
         GatewayId: e.target.value,
       }

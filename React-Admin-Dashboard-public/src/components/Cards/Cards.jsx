@@ -30,7 +30,7 @@ const Cards = () => {
 
   async function dataopti(OptimizerId, GatewayId) {
     const response = await axios.post(
-      "http://44.202.86.124:5000/getLatestData",{
+      "http://3.106.217.161:5000/getLatestData",{
         GatewayId,
         OptimizerId,
       }

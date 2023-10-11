@@ -16,7 +16,7 @@ export default function CircularPro() {
   });
 
   async function sendData(){
-    const response = await axios.post("http://192.168.1.5:8080/toggleOptimizer",{
+    const response = await axios.post("http://3.106.217.161:5000/toggleOptimizer",{
         // GatewayId: "Amit",
         // OptimizerId: "Hello",
         // toggle:"false"

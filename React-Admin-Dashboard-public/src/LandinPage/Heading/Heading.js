@@ -85,7 +85,7 @@ function Heading({ dataopti }) {
     async function allData() {
       try {
         const response = await axios.post(
-          "http://44.202.86.124:5000/allGateways"
+          "http://3.106.217.161:5000/allGateways"
           // "http://192.168.1.5:5000/allGateways"
         );
         setDashboardData(response.data);
@@ -119,7 +119,7 @@ function Heading({ dataopti }) {
 
   useEffect(() => {
     async function allGateways() {
-      const response = await axios.get("http://44.202.86.124:5000/allGateways");
+      const response = await axios.get("http://3.106.217.161:5000/allGateways");
       setGatewayIds(response.data);
     }
     allGateways();
@@ -130,7 +130,7 @@ function Heading({ dataopti }) {
   async function optimizer(e) {
     setSelectedGateway(e.target.value);
     const response = await axios.post(
-      "http://44.202.86.124:5000/getOptimizer",
+      "http://3.106.217.161:5000/getOptimizer",
       {
         GatewayId: e.target.value,
       }

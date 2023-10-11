@@ -182,7 +182,7 @@ function Graph() {
     const humidity = [];
     const labelss = [];
     const graphData = async () => {
-      const response = await axios.post("http://44.202.86.124:5000/getGraphData", {
+      const response = await axios.post("http://3.106.217.161:5000/getGraphData", {
         GatewayId: gate,
         OptimizerId: opti,
       });

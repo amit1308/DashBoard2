@@ -25,7 +25,7 @@ function Heading({ dataopti }) {
   useEffect(() => {
     
     async function allGateways() {
-      const response = await axios.get("http://44.202.86.124:5000/allGateways");
+      const response = await axios.get("http://3.106.217.161:5000/allGateways");
       setGatewayIds(response.data);
     }
     allGateways();
@@ -35,7 +35,7 @@ function Heading({ dataopti }) {
   const [optimizerIds, setOptimizerIds] = useState([]);
   async function optimizer(e) {
     setSelectedGateway(e.target.value);
-    const response = await axios.post("http://44.202.86.124:5000/getOptimizer", {
+    const response = await axios.post("http://3.106.217.161:5000/getOptimizer", {
       GatewayId: e.target.value,
     });
     setOptimizerIds(response.data[0].OptimizerIds);
