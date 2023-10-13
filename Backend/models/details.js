@@ -21,6 +21,8 @@ const detailsSchema = new Schema(
     MinAirConditionerOffDuration: { type: String },
     AirConditionerOffDeclarationMinPeriod: { type: String },
     GatewayUploadingRate: { type: String },
+    thermostateInterval: { type: String },
+    thermostateTimeIncrease: { type: String },
   },
   {
     timestamps: true,

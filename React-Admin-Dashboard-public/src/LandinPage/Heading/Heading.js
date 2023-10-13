@@ -6,6 +6,7 @@ import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import axios from "axios";
+import { FaBeer, FaPowerOff } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
 import {
   updateOptimizer,
@@ -144,15 +145,53 @@ function Heading({ dataopti }) {
   // All the Latest data from selected optimizer and gateway id
   const [param, setParam] = useState({});
   async function getData(e) {
-    
     setSelectedOptimizer(e.target.value);
-    const data = await dataopti(e.target.value, selectedGateway,selectedCustomer,selectedZone,selectedLocation);
+    const data = await dataopti(
+      e.target.value,
+      selectedGateway,
+      selectedCustomer,
+      selectedZone,
+      selectedLocation
+    );
     console.log(data);
     setParam(data);
     dispatch(updateOptimizer(e.target.value));
 
     // const graphData = await RecievedData(e.target.value,selectedGateway);
   }
+
+  const byPass = async () => {
+    const response = await axios.post(
+      "http://54.79.169.45:1234/controlData",
+      // "http://localhost:1234/controlData",
+      {
+        // RESET: "",
+        ToggleRequest: "1",
+        CustomerName: selectedCustomer,
+        Zone: selectedZone,
+        Location: selectedLocation,
+        GatewayID: selectedGateway,
+        OptimizerID: selectedOptimizer,
+        // OptimizerID: "NGCSEEE2E95BE0",
+        // Flag: "true",
+        FirstPowerOnObservation: "",
+        MaxCompressorTurnOffCountPerHour: "",
+        MaxObservationTime: "",
+        OptimizationTime: "",
+        SteadyStateRoomTemperatureTolerance: "",
+        SteadyStateCoilTemperatureTolerance: "",
+        SteadyStateSamplingDuration: "",
+        DeltaT: "",
+        MinAirConditionerOffDuration: "",
+        AirConditionerOffDeclarationMinPeriod: "",
+        GatewayUploadingRate: "",
+        thermostateInterval: "",
+        thermostateTimeIncrease: "",
+      }
+    );
+
+    return response.data;
+  };
 
   return (
     <>
@@ -329,7 +368,23 @@ function Heading({ dataopti }) {
           }}
         >
           <div>
-            <ByPass />
+            <div
+              onClick={byPass}
+              style={{
+                backgroundColor: "#40b9d6",
+                width: "190%",
+                height: "100%",
+                borderRadius: "50%",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                boxShadow: "none",
+              }}
+            >
+              <p>
+                <FaPowerOff size="35" />
+              </p>
+            </div>
           </div>
           <div
             style={{

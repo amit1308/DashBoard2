@@ -3,6 +3,7 @@ import Heading from "../LandinPage/Heading/Heading";
 import axios from "axios";
 import { useSelector } from "react-redux";
 
+
 const Analytics = () => {
   const [inputText, setinputText] = useState("");
   const [inputText1, setinputText1] = useState("");
@@ -15,16 +16,23 @@ const Analytics = () => {
   const [inputText8, setinputText8] = useState("");
   const [inputText9, setinputText9] = useState("");
   const [inputText10, setinputText10] = useState("");
+  const [inputText11, setinputText11] = useState("");
+  const [inputText12, setinputText12] = useState("");
   const [gatewayId, setGatewayId] = useState("");
   const [optimizerId, setOptimizerId] = useState("");
   const [customerName, setCustomerName] = useState("");
   const [zone, setZone] = useState("");
   const [location, setLocation] = useState("");
+  const [reset, setReset] = useState("1");
 
- 
   // data(gatewayId, optimizerId)
-  async function dataopti(OptimizerId, GatewayId,CustomerName,Zone,Location) {
-
+  async function dataopti(
+    OptimizerId,
+    GatewayId,
+    CustomerName,
+    Zone,
+    Location
+  ) {
     setGatewayId(GatewayId);
     setOptimizerId(OptimizerId);
     setCustomerName(CustomerName);
@@ -77,7 +85,16 @@ const Analytics = () => {
   const handleInputChange10 = (event) => {
     setinputText10(event.target.value);
   };
-  const handleButtonClick = async () => {
+  const handleInputChange11 = (event) => {
+    setinputText11(event.target.value);
+  };
+  const handleInputChange12 = (event) => {
+    setinputText12(event.target.value);
+  };
+
+  
+
+  const set = async () => {
     setinputText("");
     setinputText1("");
     setinputText2("");
@@ -89,28 +106,86 @@ const Analytics = () => {
     setinputText8("");
     setinputText9("");
     setinputText10("");
+    setinputText11("");
+    setinputText12("");
 
-    const response = await axios.post("http://localhost:1234/controlData", {
-      RESET:"",
-      ToggleRequest:"",
-      CustomerName:customerName ,
-      Zone: zone,
-      Location: location,
-      GatewayID: gatewayId,
-      OptimizerID: optimizerId,
-      // Flag: "true",
-      FirstPowerOnObservation: inputText,
-      MaxCompressorTurnOffCountPerHour: inputText1,
-      MaxObservationTime: inputText2,
-      OptimizationTime: inputText3,
-      SteadyStateRoomTemperatureTolerance: inputText4,
-      SteadyStateCoilTemperatureTolerance: inputText5,
-      SteadyStateSamplingDuration: inputText6,
-      DeltaT: inputText7,
-      MinAirConditionerOffDuration: inputText8,
-      AirConditionerOffDeclarationMinPeriod: inputText9,
-      GatewayUploadingRate: inputText10,
-    });
+    const response = await axios.post(
+      // "http://3.27.181.17:1234/controlData",
+      "http://localhost:1234/controlData",
+
+      {
+        // RESET: "",
+        // ToggleRequest: "",
+        CustomerName: customerName,
+        Zone: zone,
+        Location: location,
+        GatewayID: gatewayId,
+        OptimizerID: optimizerId,
+        // OptimizerID: "NGCSEEE2E95BE0",
+        // Flag: "true",
+        FirstPowerOnObservation: inputText,
+        MaxCompressorTurnOffCountPerHour: inputText1,
+        MaxObservationTime: inputText2,
+        OptimizationTime: inputText3,
+        SteadyStateRoomTemperatureTolerance: inputText4,
+        SteadyStateCoilTemperatureTolerance: inputText5,
+        SteadyStateSamplingDuration: inputText6,
+        DeltaT: inputText7,
+        MinAirConditionerOffDuration: inputText8,
+        AirConditionerOffDeclarationMinPeriod: inputText9,
+        GatewayUploadingRate: inputText10,
+        thermostateInterval: inputText11,
+        thermostateTimeIncrease: inputText12,
+      }
+    );
+
+    return response.data;
+  };
+
+  const Reset = async () => {
+    setinputText("");
+    setinputText1("");
+    setinputText2("");
+    setinputText3("");
+    setinputText4("");
+    setinputText5("");
+    setinputText6("");
+    setinputText7("");
+    setinputText8("");
+    setinputText9("");
+    setinputText10("");
+    setinputText11("");
+    setinputText12("");
+
+    const response = await axios.post(
+      "http://54.79.169.45:1234/controlData",
+      // "http://localhost:1234/controlData",
+
+      {
+        RESET: reset,
+        // ToggleRequest: "",
+        CustomerName: customerName,
+        Zone: zone,
+        Location: location,
+        GatewayID: gatewayId,
+        OptimizerID: optimizerId,
+
+        // Flag: "true",
+        FirstPowerOnObservation: inputText,
+        MaxCompressorTurnOffCountPerHour: inputText1,
+        MaxObservationTime: inputText2,
+        OptimizationTime: inputText3,
+        SteadyStateRoomTemperatureTolerance: inputText4,
+        SteadyStateCoilTemperatureTolerance: inputText5,
+        SteadyStateSamplingDuration: inputText6,
+        DeltaT: inputText7,
+        MinAirConditionerOffDuration: inputText8,
+        AirConditionerOffDeclarationMinPeriod: inputText9,
+        GatewayUploadingRate: inputText10,
+        thermostateInterval: inputText11,
+        thermostateTimeIncrease: inputText12,
+      }
+    );
 
     return response.data;
   };
@@ -125,7 +200,9 @@ const Analytics = () => {
           //  top: 0
         }}
       >
+        <div>
         <Heading dataopti={dataopti} />
+        </div>
       </div>
       <div style={{ padding: "3px", marginLeft: "20px" }}>
         <div style={{ display: "flex", flexDirection: "row" }}>
@@ -272,6 +349,49 @@ const Analytics = () => {
             />
           </div>
         </div>
+
+        <div style={{ display: "flex", flexDirection: "row" }}>
+          <div style={{ width: "50%" }}>
+            <p>MaxObservationTime</p>
+          </div>
+          <div style={{ width: "50%", marginTop: "15px" }}>
+            <input
+              type="text"
+              value={inputText10}
+              onChange={handleInputChange10}
+              placeholder="Enter text"
+            />
+          </div>
+        </div>
+
+        <div style={{ display: "flex", flexDirection: "row" }}>
+          <div style={{ width: "50%" }}>
+            <p>ThermoStateTimeIncrease</p>
+          </div>
+          <div style={{ width: "50%", marginTop: "15px" }}>
+            <input
+              type="text"
+              value={inputText11}
+              onChange={handleInputChange11}
+              placeholder="Enter text"
+            />
+          </div>
+        </div>
+
+        <div style={{ display: "flex", flexDirection: "row" }}>
+          <div style={{ width: "50%" }}>
+            <p>ThermoStateInterval</p>
+          </div>
+          <div style={{ width: "50%", marginTop: "15px" }}>
+            <input
+              type="text"
+              value={inputText12}
+              onChange={handleInputChange12}
+              placeholder="Enter text"
+            />
+          </div>
+        </div>
+
         <div
           style={{
             display: "flex",
@@ -296,7 +416,7 @@ const Analytics = () => {
                   backgroundColor: "darkblue",
                 },
               }}
-              onClick={handleButtonClick}
+              onClick={set}
             >
               Set
             </button>
@@ -316,7 +436,7 @@ const Analytics = () => {
                   backgroundColor: "darkblue",
                 },
               }}
-              onClick={handleButtonClick}
+              onClick={Reset}
             >
               Reset
             </button>

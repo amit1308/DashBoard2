@@ -6,7 +6,7 @@ import { toast } from "react-toastify";
 
 function App({ tableD }) {
   const [fakeData, setFakedata] = useState([]);
-  const [selectedOption, setSelectedOption] = useState(1);
+  const [selectedOption, setSelectedOption] = useState( );
   const options = [1, 2, 3, 4, 6, 8, 12];
   useEffect(() => {
    
