@@ -165,14 +165,13 @@ function Heading({ dataopti }) {
       "http://54.79.169.45:1234/controlData",
       // "http://localhost:1234/controlData",
       {
-        // RESET: "",
+       
         ToggleRequest: "1",
         CustomerName: selectedCustomer,
         Zone: selectedZone,
         Location: selectedLocation,
         GatewayID: selectedGateway,
         OptimizerID: selectedOptimizer,
-        // OptimizerID: "NGCSEEE2E95BE0",
         // Flag: "true",
         FirstPowerOnObservation: "",
         MaxCompressorTurnOffCountPerHour: "",
