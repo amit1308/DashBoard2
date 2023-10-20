@@ -23,7 +23,7 @@ function CompactCard({param}) {
         <Speedometer
         width={160}
         height={130}
-          maxValue={100}
+          maxValue={200}
           value={`${param['Ph1Current(A)']}`}
           needleColor="#6de3e7"
           startColor="#40b9d6"
@@ -42,7 +42,7 @@ function CompactCard({param}) {
         <Speedometer
           width={160}
           height={130}
-            maxValue={100}
+            maxValue={200}
             value={`${param['Ph1ActivePower(kW)']}`}
             needleColor="#6de3e7"
             startColor="#40b9d6"
@@ -64,7 +64,7 @@ function CompactCard({param}) {
         <Speedometer
         width={200}
         height={200}
-          maxValue={100}
+          maxValue={500}
           value={`${param['Ph1Voltage(V)']}`}
           needleColor="#6de3e7"
           startColor="#40b9d6"
@@ -89,7 +89,7 @@ function CompactCard({param}) {
         <Speedometer
          width={160}
          height={130}
-           maxValue={50}
+           maxValue={1}
            value={`${param['Ph1ApparentPower(kVA)']}`}
            needleColor="#6de3e7"
            startColor="#40b9d6"
@@ -108,7 +108,7 @@ function CompactCard({param}) {
         <Speedometer
          width={160}
          height={130}
-           maxValue={10}
+           maxValue={1}
            value={`${param['Ph1PowerFactor']}`}
            needleColor="#6de3e7"
            startColor="#40b9d6"
@@ -135,7 +135,7 @@ function CompactCard({param}) {
         <Speedometer
         width={160}
         height={130}
-          maxValue={100}
+          maxValue={200}
           value={`${param['Ph2Current(A)']}`}
           needleColor="#6de3e7"
           startColor="#40b9d6"
@@ -154,7 +154,7 @@ function CompactCard({param}) {
         <Speedometer
           width={160}
           height={130}
-            maxValue={100}
+            maxValue={200}
             value={`${param['Ph2ActivePower(kW)']}`}
             needleColor="#6de3e7"
             startColor="#40b9d6"
@@ -176,7 +176,7 @@ function CompactCard({param}) {
         <Speedometer
         width={200}
         height={200}
-          maxValue={100}
+          maxValue={500}
           value={`${param['Ph2Voltage(V)']}`}
           needleColor="#6de3e7"
           startColor="#40b9d6"
@@ -200,7 +200,7 @@ function CompactCard({param}) {
         <Speedometer
          width={160}
          height={130}
-           maxValue={100}
+           maxValue={500}
            value={`${param['Ph2ApparentPower(kVA)']}`}
            needleColor="#6de3e7"
            startColor="#40b9d6"
@@ -219,7 +219,7 @@ function CompactCard({param}) {
         <Speedometer
          width={160}
          height={130}
-           maxValue={100}
+           maxValue={1}
            value= {`${param['Ph2PowerFactor']}`}
            needleColor="#6de3e7"
            startColor="#40b9d6"
@@ -246,7 +246,7 @@ function CompactCard({param}) {
         <Speedometer
         width={160}
         height={130}
-          maxValue={100}
+          maxValue={200}
           value= {`${param['Ph3Current(A)']}`}
           needleColor="#6de3e7"
           startColor="#40b9d6"
@@ -265,7 +265,7 @@ function CompactCard({param}) {
         <Speedometer
           width={160}
           height={130}
-            maxValue={100}
+            maxValue={200}
             value={`${param['Ph3ActivePower(kW)']}`}
             needleColor="#6de3e7"
             startColor="#40b9d6"
@@ -287,7 +287,7 @@ function CompactCard({param}) {
         <Speedometer
         width={200}
         height={200}
-          maxValue={100}
+          maxValue={500}
           value= {`${param['Ph3Voltage(V)']}`}
           needleColor="#6de3e7"
           startColor="#40b9d6"
@@ -311,7 +311,7 @@ function CompactCard({param}) {
         <Speedometer
          width={160}
          height={130}
-           maxValue={100}
+           maxValue={500}
            value= {`${param['Ph3ApparentPower(kVA)']}`}
            needleColor="#6de3e7"
            startColor="#40b9d6"
@@ -330,7 +330,7 @@ function CompactCard({param}) {
         <Speedometer
          width={160}
          height={130}
-           maxValue={100}
+           maxValue={1}
            value={`${param['Ph3PowerFactor']}`}
            needleColor="#6de3e7"
            startColor="#40b9d6"

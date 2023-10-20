@@ -23,30 +23,30 @@ import { toast } from "react-toastify";
 function Heading({ dataopti }) {
   const dispatch = useDispatch();
 
-  const [selectedOptimizer, setSelectedOptimizer] = useState([]);
-
-  // all gateways Id
-  const [selectedGateway, setSelectedGateway] = useState("");
-  const [gatewaysIds, setGatewayIds] = useState([]);
-
-  // start
-  // customer,zone,location
+  //gateway
   const [dashboardData, setDashboardData] = useState([]);
   const [customerName, setCustomerName] = useState([]);
   const [zone, setZone] = useState([]);
   const [location, setLocation] = useState([]);
+  const [gatewayID, setGatewayID] = useState([]);
+  const [optimizerId, setOptimizerId] = useState([]);
 
+
+  const [selectedGateway, setSelectedGateway] = useState("");
   const [selectedZone, setSelectedZone] = useState("");
   const [selectedLocation, setSelectedLocation] = useState("");
+  const [selectedoptimizerId, setSelectedoptimizerId] = useState("");
   const [selectedCustomer, setSelectedCustomer] = useState("");
 
+
+
   useEffect(() => {
-    if (customerName.length == 0) {
+    
       let customers = dashboardData.map((item) => item.CustomerName);
       customers = new Set(customers);
       customers = [...customers].slice(1);
       setCustomerName(customers);
-    }
+    
 
     if (selectedCustomer) {
       console.log(customerName);
@@ -74,20 +74,57 @@ function Heading({ dataopti }) {
       locations = [...locations].slice(1);
       setLocation(locations);
     }
+
+    if (selectedLocation && selectedZone && selectedCustomer) {
+      let gatewayId = dashboardData.map((item) => {
+        if (
+          item.CustomerName == selectedCustomer &&
+          item.Zone == selectedZone &&
+          item.Location == selectedLocation
+        ) {
+          return item.GatewayID;
+        }
+      });
+      gatewayId = new Set(gatewayId);
+      gatewayId = [...gatewayId].slice(1);
+      setGatewayID(gatewayId);
+    }
+
+    if (
+      selectedGateway &&
+      selectedLocation &&
+      selectedZone &&
+      selectedCustomer
+    ) {
+      let opti = dashboardData.map((item) => {
+        if (
+          item.CustomerName == selectedCustomer &&
+          item.Zone == selectedZone &&
+          item.Location == selectedLocation &&
+          item.GatewayID == selectedGateway
+        ) {
+          return item.OptimizerID;
+        }
+      });
+      opti = new Set(opti);
+      opti = [...opti].slice(1);
+      setOptimizerId(opti);
+    }
   }, [
     dashboardData,
     selectedGateway,
     selectedZone,
     selectedLocation,
     selectedCustomer,
+    selectedoptimizerId
   ]);
 
   useEffect(() => {
     async function allData() {
       try {
-        const response = await axios.post(
-          "http://3.106.217.161:5000/allGateways"
-          // "http://192.168.1.5:5000/allGateways"
+        const response = await axios.get(
+          "http://3.106.217.161:5000/AllData"
+          // "http://192.168.1.7:5000/AllData"
         );
         setDashboardData(response.data);
         console.log(response.data, "allData");
@@ -100,78 +137,84 @@ function Heading({ dataopti }) {
 
   async function handleCustomerClick(option) {
     setSelectedCustomer(option.target.value);
-    dispatch(updateCustomerName(option.target.value));
+    setSelectedoptimizerId("");
     setSelectedLocation("");
     setSelectedZone("");
+    setSelectedGateway("");
+    dispatch(updateCustomerName(option.target.value));
+    getData();
+
   }
 
   async function handleZoneClick(option) {
     setSelectedZone(option.target.value);
     setSelectedLocation("");
+    setSelectedoptimizerId("");
+    setSelectedGateway("");
     dispatch(updateZone(option.target.value));
+    getData();
   }
 
   async function handleLocationClick(option) {
     setSelectedLocation(option.target.value);
+    setSelectedoptimizerId("");
+    setSelectedGateway("");
     dispatch(updateLocation(option.target.value));
+    getData();
   }
 
-  //end
-
-  useEffect(() => {
-    async function allGateways() {
-      const response = await axios.get("http://3.106.217.161:5000/allGateways");
-      setGatewayIds(response.data);
-    }
-    allGateways();
-  }, []);
-
-  // All optimizer Id correspoding to the selected gateway Id
-  const [optimizerIds, setOptimizerIds] = useState([]);
-  async function optimizer(e) {
-    setSelectedGateway(e.target.value);
-    const response = await axios.post(
-      "http://3.106.217.161:5000/getOptimizer",
-      {
-        GatewayId: e.target.value,
-      }
-    );
-    setOptimizerIds(response.data[0].OptimizerIds);
-    setSelectedOptimizer("");
-    dispatch(updateGateway(e.target.value));
-    dispatch(updateOptimizer(""));
+  async function handleGatewayClick(option) {
+    setSelectedGateway(option.target.value);
+   setSelectedoptimizerId("");
+   dispatch(updateGateway(option.target.value));
+   getData();
   }
 
-  // All the Latest data from selected optimizer and gateway id
-  const [param, setParam] = useState({});
-  async function getData(e) {
-    setSelectedOptimizer(e.target.value);
+  async function getData(option) {
+    
     const data = await dataopti(
-      e.target.value,
+     option,
       selectedGateway,
       selectedCustomer,
       selectedZone,
       selectedLocation
     );
-    console.log(data);
-    setParam(data);
-    dispatch(updateOptimizer(e.target.value));
-
-    // const graphData = await RecievedData(e.target.value,selectedGateway);
   }
 
+  async function handleOptimizerClick (option) {
+    setSelectedoptimizerId(option.target.value);
+    dispatch(updateOptimizer(option.target.value));
+    getData(option.target.value);
+
+  };
+//   function handleOptimizerClick1(option){
+//     getData();
+// handleOptimizerClick(option);
+//   }
+
+
+  //end
+function handleBypass(){
+  handleClick();
+  byPass();
+}
+
+  const [isOn, setIsOn] = useState(false); // Initial state: off
+
+  const handleClick = () => {
+    setIsOn(!isOn); // Toggle the state
+  };
   const byPass = async () => {
     const response = await axios.post(
-      "http://54.79.169.45:1234/controlData",
+      "http://3.106.217.161:5000/controlData",
       // "http://localhost:1234/controlData",
       {
-       
-        ToggleRequest: "1",
+        ToggleRequest: isOn,
         CustomerName: selectedCustomer,
         Zone: selectedZone,
         Location: selectedLocation,
         GatewayID: selectedGateway,
-        OptimizerID: selectedOptimizer,
+        OptimizerID: selectedoptimizerId,
         // Flag: "true",
         FirstPowerOnObservation: "",
         MaxCompressorTurnOffCountPerHour: "",
@@ -225,19 +268,19 @@ function Heading({ dataopti }) {
                 Customer
               </InputLabel>
               <Select
-                labelId="demo-simple-select-label"
-                id="demo-simple-select"
-                label="Customer"
-                value={selectedCustomer}
-                onChange={handleCustomerClick}
-                sx={{ color: "black" }}
-              >
-                {customerName.map((item) => (
-                  <MenuItem key={item} value={item}>
-                    {item}
-                  </MenuItem>
-                ))}
-              </Select>
+                  labelId="demo-simple-select-label"
+                  id="demo-simple-select"
+                  label="Customer"
+                  value={selectedCustomer}
+                  onChange={handleCustomerClick}
+                  sx={{ color: "black" }}
+                >
+                  {customerName.map((item) => (
+                    <MenuItem key={item} value={item}>
+                      {item}
+                    </MenuItem>
+                  ))}
+                </Select>
             </FormControl>
           </Box>
         </div>
@@ -258,19 +301,19 @@ function Heading({ dataopti }) {
                 Zone
               </InputLabel>
               <Select
-                labelId="demo-simple-select-label"
-                id="demo-simple-select"
-                label="zone"
-                value={selectedZone}
-                onChange={handleZoneClick}
-                sx={{ color: "black" }}
-              >
-                {zone.map((item) => (
-                  <MenuItem key={item} value={item}>
-                    {item}
-                  </MenuItem>
-                ))}
-              </Select>
+                  labelId="demo-simple-select-label"
+                  id="demo-simple-select"
+                  label="zone"
+                  value={selectedZone}
+                  onChange={handleZoneClick}
+                  sx={{ color: "black" }}
+                >
+                  {zone.map((item) => (
+                    <MenuItem key={item} value={item}>
+                      {item}
+                    </MenuItem>
+                  ))}
+                </Select>
             </FormControl>
           </Box>
         </div>
@@ -288,19 +331,19 @@ function Heading({ dataopti }) {
                 Location
               </InputLabel>
               <Select
-                labelId="demo-simple-select-label"
-                id="demo-simple-select"
-                label="Location"
-                value={selectedLocation}
-                onChange={handleLocationClick}
-                sx={{ color: "black" }}
-              >
-                {location.map((item) => (
-                  <MenuItem key={item} value={item}>
-                    {item}
-                  </MenuItem>
-                ))}
-              </Select>
+                  labelId="demo-simple-select-label"
+                  id="demo-simple-select"
+                  label="Location"
+                  value={selectedLocation}
+                  onChange={handleLocationClick}
+                  sx={{ color: "black" }}
+                >
+                  {location.map((item) => (
+                    <MenuItem key={item} value={item}>
+                      {item}
+                    </MenuItem>
+                  ))}
+                </Select>
             </FormControl>
           </Box>
         </div>
@@ -315,18 +358,19 @@ function Heading({ dataopti }) {
                 Gateway ID
               </InputLabel>
               <Select
-                labelId="demo-simple-select-label"
-                id="demo-simple-select"
-                label="GatewayId"
-                value={selectedGateway}
-                onChange={optimizer}
-                sx={{ color: "black" }}
-              >
-                {gatewaysIds?.map((obj) => (
-                  <MenuItem value={obj.GatewayID}> {obj.GatewayID}</MenuItem>
-                ))}
-                {/* <MenuItem  value={'sadsfdsf'}> {"dsadsafds"}</MenuItem> */}
-              </Select>
+                  labelId="demo-simple-select-label"
+                  id="demo-simple-select"
+                  label="GatewayId"
+                  value={selectedGateway}
+                  onChange={handleGatewayClick}
+                  sx={{ color: "black" }}
+                >
+                  {gatewayID.map((item) => (
+                    <MenuItem key={item} value={item}>
+                      {item}
+                    </MenuItem>
+                  ))}
+                </Select>
             </FormControl>
           </Box>
         </div>
@@ -343,17 +387,19 @@ function Heading({ dataopti }) {
                 Optimizer ID
               </InputLabel>
               <Select
-                labelId="demo-simple-select-label"
-                id="demo-simple-select"
-                label="OptimizerId"
-                onChange={getData}
-                value={selectedOptimizer}
-                sx={{ color: "black" }}
-              >
-                {optimizerIds?.map((val) => (
-                  <MenuItem value={val}> {val}</MenuItem>
-                ))}
-              </Select>
+                  labelId="demo-simple-select-label"
+                  id="demo-simple-select"
+                  label="GatewayId"
+                  value={selectedoptimizerId}
+                  onChange={handleOptimizerClick}
+                  sx={{ color: "black" }}
+                >
+                  {optimizerId.map((item) => (
+                    <MenuItem key={item} value={item}>
+                      {item}
+                    </MenuItem>
+                  ))}
+                </Select>
             </FormControl>
           </Box>
         </div>
@@ -368,7 +414,7 @@ function Heading({ dataopti }) {
         >
           <div>
             <div
-              onClick={byPass}
+              onClick={handleBypass}
               style={{
                 backgroundColor: "#40b9d6",
                 width: "190%",
@@ -394,8 +440,12 @@ function Heading({ dataopti }) {
               color: "whitesmoke",
             }}
           >
-            <h4 style={{ color: "#555152" }}>By-Pass</h4>
+     
+            <h4 style={{ color: "#555152" }}>{isOn ? 'OFF':'ON'}</h4>
+          
+           
           </div>
+        
         </div>
       </div>
     </>

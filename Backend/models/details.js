@@ -23,6 +23,7 @@ const detailsSchema = new Schema(
     GatewayUploadingRate: { type: String },
     thermostateInterval: { type: String },
     thermostateTimeIncrease: { type: String },
+    Flag: {type: String}
   },
   {
     timestamps: true,

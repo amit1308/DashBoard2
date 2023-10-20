@@ -110,8 +110,8 @@ const Analytics = () => {
     setinputText12("");
 
     const response = await axios.post(
-      // "http://3.27.181.17:1234/controlData",
-      "http://localhost:1234/controlData",
+      "http://3.106.217.161:5000/controlData",
+      // "http://localhost:1234/controlData",
 
       {
         // RESET: "",
@@ -121,21 +121,20 @@ const Analytics = () => {
         Location: location,
         GatewayID: gatewayId,
         OptimizerID: optimizerId,
-        // OptimizerID: "NGCSEEE2E95BE0",
-        // Flag: "true",
         FirstPowerOnObservation: inputText,
         MaxCompressorTurnOffCountPerHour: inputText1,
-        MaxObservationTime: inputText2,
-        OptimizationTime: inputText3,
-        SteadyStateRoomTemperatureTolerance: inputText4,
-        SteadyStateCoilTemperatureTolerance: inputText5,
-        SteadyStateSamplingDuration: inputText6,
-        DeltaT: inputText7,
-        MinAirConditionerOffDuration: inputText8,
-        AirConditionerOffDeclarationMinPeriod: inputText9,
-        GatewayUploadingRate: inputText10,
+        MaxObservationTime: inputText10,
+        OptimizationTime: inputText2,
+        SteadyStateRoomTemperatureTolerance: inputText3,
+        SteadyStateCoilTemperatureTolerance: inputText4,
+        SteadyStateSamplingDuration: inputText5,
+        DeltaT: inputText6,
+        MinAirConditionerOffDuration: inputText7,
+        AirConditionerOffDeclarationMinPeriod: inputText8,
+        GatewayUploadingRate: inputText9,
         thermostateInterval: inputText11,
         thermostateTimeIncrease: inputText12,
+        // Flag:"1"
       }
     );
 
@@ -158,7 +157,7 @@ const Analytics = () => {
     setinputText12("");
 
     const response = await axios.post(
-      "http://54.79.169.45:1234/controlData",
+      "http://3.106.217.161:5000/controlData",
       // "http://localhost:1234/controlData",
 
       {
@@ -350,19 +349,7 @@ const Analytics = () => {
           </div>
         </div>
 
-        <div style={{ display: "flex", flexDirection: "row" }}>
-          <div style={{ width: "50%" }}>
-            <p>MaxObservationTime</p>
-          </div>
-          <div style={{ width: "50%", marginTop: "15px" }}>
-            <input
-              type="text"
-              value={inputText10}
-              onChange={handleInputChange10}
-              placeholder="Enter text"
-            />
-          </div>
-        </div>
+     
 
         <div style={{ display: "flex", flexDirection: "row" }}>
           <div style={{ width: "50%" }}>
