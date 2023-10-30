@@ -168,21 +168,21 @@ const Analytics = () => {
         Location: location,
         GatewayID: gatewayId,
         OptimizerID: optimizerId,
-
-        // Flag: "true",
         FirstPowerOnObservation: inputText,
         MaxCompressorTurnOffCountPerHour: inputText1,
-        MaxObservationTime: inputText2,
-        OptimizationTime: inputText3,
-        SteadyStateRoomTemperatureTolerance: inputText4,
-        SteadyStateCoilTemperatureTolerance: inputText5,
-        SteadyStateSamplingDuration: inputText6,
-        DeltaT: inputText7,
-        MinAirConditionerOffDuration: inputText8,
-        AirConditionerOffDeclarationMinPeriod: inputText9,
-        GatewayUploadingRate: inputText10,
+        MaxObservationTime: inputText10,
+        OptimizationTime: inputText2,
+        SteadyStateRoomTemperatureTolerance: inputText3,
+        SteadyStateCoilTemperatureTolerance: inputText4,
+        SteadyStateSamplingDuration: inputText5,
+        DeltaT: inputText6,
+        MinAirConditionerOffDuration: inputText7,
+        AirConditionerOffDeclarationMinPeriod: inputText8,
+        GatewayUploadingRate: inputText9,
         thermostateInterval: inputText11,
         thermostateTimeIncrease: inputText12,
+        // Flag:"1"
+
       }
     );
 

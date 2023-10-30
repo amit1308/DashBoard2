@@ -33,6 +33,7 @@ let cofigureData = {};
 
 app.post("/controlData", async (req, res) => {
    cofigureData = req.body;
+   console.log(cofigureData);
 });
 app.get("/controldata", async (req, res) => {
     

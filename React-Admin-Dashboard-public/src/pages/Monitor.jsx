@@ -1,11 +1,12 @@
-import React from 'react';
-import Cards from '../components/Cards/Cards';
+import React from "react";
+import Cards from "../components/Cards/Cards";
 const About = () => {
-    return (
-        <div style={{backgroundColor:"#01040f"}}>
-           {/* <Cards /> */}
-        </div>
-    );
+  return (
+    <div>
+      {/* <Cards /> */}
+      <h1>About</h1>
+    </div>
+  );
 };
 
 export default About;

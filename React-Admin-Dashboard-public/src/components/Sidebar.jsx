@@ -19,7 +19,7 @@ const Sidebar = ({children}) => {
     const toggle = () => setIsOpen (!isOpen);
     const menuItem=[
         {
-            path:"/",
+            path:"/Landing",
             name:"Dashboard",
             icon:<FaTh/>
         },
@@ -66,6 +66,7 @@ const Sidebar = ({children}) => {
                        </NavLink>
                    ))
                }
+                <NavLink to='/login' onClick={()=> window.localStorage.clear()} className="link" activeclassName="active">Logout</NavLink>
            </div>
            <main>{children}</main>
         </div>

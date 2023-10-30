@@ -15,9 +15,7 @@ const Card = ({ data }) => {
 // Compact Card
 function CompactCard({ param }) {
     return (
-        <div
-        className=""
-        >
+        <div  >
 
 
         

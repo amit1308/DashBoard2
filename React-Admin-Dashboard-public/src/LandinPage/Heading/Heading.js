@@ -199,7 +199,7 @@ function handleBypass(){
   byPass();
 }
 
-  const [isOn, setIsOn] = useState(false); // Initial state: off
+  const [isOn, setIsOn] = useState(0); // Initial state: off
 
   const handleClick = () => {
     setIsOn(!isOn); // Toggle the state
@@ -215,20 +215,6 @@ function handleBypass(){
         Location: selectedLocation,
         GatewayID: selectedGateway,
         OptimizerID: selectedoptimizerId,
-        // Flag: "true",
-        FirstPowerOnObservation: "",
-        MaxCompressorTurnOffCountPerHour: "",
-        MaxObservationTime: "",
-        OptimizationTime: "",
-        SteadyStateRoomTemperatureTolerance: "",
-        SteadyStateCoilTemperatureTolerance: "",
-        SteadyStateSamplingDuration: "",
-        DeltaT: "",
-        MinAirConditionerOffDuration: "",
-        AirConditionerOffDeclarationMinPeriod: "",
-        GatewayUploadingRate: "",
-        thermostateInterval: "",
-        thermostateTimeIncrease: "",
       }
     );
 

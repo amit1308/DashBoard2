@@ -10,23 +10,35 @@ import Product from "./pages/Product.jsx";
 import ProductList from "./pages/ProductList.jsx";
 import { ToastContainer } from "react-toastify";
 import Heading from "./LandinPage/Heading/Heading";
+import Login from "./Admin/Login";
+import PrivateRouteFour from "./PrivateRouteFour";
 
 const App = () => {
   return (
-    <BrowserRouter>
-      <ToastContainer />
-      <Sidebar>
-        <Routes>
-          <Route path="/" element={<Dashboard />} />
-          <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/comment" element={<Comment />} />
-          <Route path="/analytics" element={<Analytics />} />
-          <Route path="/product" element={<Product />} />
-          <Route path="/productList" element={<ProductList />} />
-        </Routes>
-      </Sidebar>
-    </BrowserRouter>
+    <>
+      {/* <BrowserRouter>
+        <Routes></Routes>
+      </BrowserRouter> */}
+
+      <BrowserRouter>
+        <ToastContainer />
+
+        <Sidebar>
+          <Routes>
+            <Route path="/login" element={<Login />} />
+            <Route element={<PrivateRouteFour />}>
+              <Route path="/Landing" element={<Dashboard />} />
+              <Route path="/dashboard" element={<Dashboard />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/comment" element={<Comment />} />
+              <Route path="/analytics" element={<Analytics />} />
+              <Route path="/product" element={<Product />} />
+              <Route path="/productList" element={<ProductList />} />
+            </Route>
+          </Routes>
+        </Sidebar>
+      </BrowserRouter>
+    </>
   );
 };
 
