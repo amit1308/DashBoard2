@@ -31,34 +31,34 @@ function Heading({ dataopti }) {
   const [gatewayID, setGatewayID] = useState([]);
   const [optimizerId, setOptimizerId] = useState([]);
 
-
   const [selectedGateway, setSelectedGateway] = useState("");
   const [selectedZone, setSelectedZone] = useState("");
   const [selectedLocation, setSelectedLocation] = useState("");
   const [selectedoptimizerId, setSelectedoptimizerId] = useState("");
   const [selectedCustomer, setSelectedCustomer] = useState("");
 
-
-
   useEffect(() => {
-    
-      let customers = dashboardData.map((item) => item.CustomerName);
-      customers = new Set(customers);
-      customers = [...customers].slice(1);
-      setCustomerName(customers);
-    
+    // console.log(dashboardData);
+    let customers = dashboardData.map((item) => item.CustomerName);
+    // Use Set to get distinct customer names
+    let distinctCustomers = [...new Set(customers)];
+
+    customers = new Set(customers);
+    customers = [...customers].slice(1);
+    setCustomerName(distinctCustomers);
 
     if (selectedCustomer) {
-      console.log(customerName);
+      // console.log(customerName);
       let zones = dashboardData.map((item) => {
         if (item.CustomerName == selectedCustomer) {
           return item.Zone;
         }
       });
-      console.log(zones);
+      let distinctZone = [...new Set(zones)];
+      // console.log(distinctZone);
       zones = new Set(zones);
       zones = [...zones].slice(1);
-      setZone(zones);
+      setZone(distinctZone);
     }
 
     if (selectedZone && selectedCustomer) {
@@ -70,9 +70,11 @@ function Heading({ dataopti }) {
           return item.Location;
         }
       });
+      let distinctLocation = [...new Set(locations)];
+      // console.log(distinctLocation);
       locations = new Set(locations);
       locations = [...locations].slice(1);
-      setLocation(locations);
+      setLocation(distinctLocation);
     }
 
     if (selectedLocation && selectedZone && selectedCustomer) {
@@ -85,9 +87,11 @@ function Heading({ dataopti }) {
           return item.GatewayID;
         }
       });
+      let distinctGatewayId = [...new Set(gatewayId)];
+      // console.log(distinctGatewayId);
       gatewayId = new Set(gatewayId);
       gatewayId = [...gatewayId].slice(1);
-      setGatewayID(gatewayId);
+      setGatewayID(distinctGatewayId);
     }
 
     if (
@@ -116,7 +120,7 @@ function Heading({ dataopti }) {
     selectedZone,
     selectedLocation,
     selectedCustomer,
-    selectedoptimizerId
+    selectedoptimizerId,
   ]);
 
   useEffect(() => {
@@ -126,7 +130,10 @@ function Heading({ dataopti }) {
           "http://3.106.217.161:5000/AllData"
           // "http://192.168.1.7:5000/AllData"
         );
+        // const resData = response.data;
+
         setDashboardData(response.data);
+
         console.log(response.data, "allData");
       } catch (error) {
         toast("There is error in fetching data Please refresh the page");
@@ -136,14 +143,13 @@ function Heading({ dataopti }) {
   }, []);
 
   async function handleCustomerClick(option) {
+    console.log({ option });
     setSelectedCustomer(option.target.value);
     setSelectedoptimizerId("");
     setSelectedLocation("");
     setSelectedZone("");
     setSelectedGateway("");
     dispatch(updateCustomerName(option.target.value));
-    getData();
-
   }
 
   async function handleZoneClick(option) {
@@ -152,7 +158,6 @@ function Heading({ dataopti }) {
     setSelectedoptimizerId("");
     setSelectedGateway("");
     dispatch(updateZone(option.target.value));
-    getData();
   }
 
   async function handleLocationClick(option) {
@@ -160,44 +165,37 @@ function Heading({ dataopti }) {
     setSelectedoptimizerId("");
     setSelectedGateway("");
     dispatch(updateLocation(option.target.value));
-    getData();
   }
 
   async function handleGatewayClick(option) {
     setSelectedGateway(option.target.value);
-   setSelectedoptimizerId("");
-   dispatch(updateGateway(option.target.value));
-   getData();
+    setSelectedoptimizerId("");
+    dispatch(updateGateway(option.target.value));
   }
 
-  async function getData(option) {
-    
+  async function handleOptimizerClick(option) {
+    setSelectedoptimizerId(option.target.value);
+    dispatch(updateOptimizer(option.target.value));
+    // getData(option.target.value);
+
     const data = await dataopti(
-     option,
+      option.target.value,
       selectedGateway,
       selectedCustomer,
       selectedZone,
       selectedLocation
     );
   }
-
-  async function handleOptimizerClick (option) {
-    setSelectedoptimizerId(option.target.value);
-    dispatch(updateOptimizer(option.target.value));
-    getData(option.target.value);
-
-  };
-//   function handleOptimizerClick1(option){
-//     getData();
-// handleOptimizerClick(option);
-//   }
-
+  //   function handleOptimizerClick1(option){
+  //     getData();
+  // handleOptimizerClick(option);
+  //   }
 
   //end
-function handleBypass(){
-  handleClick();
-  byPass();
-}
+  function handleBypass() {
+    handleClick();
+    byPass();
+  }
 
   const [isOn, setIsOn] = useState(0); // Initial state: off
 
@@ -254,19 +252,19 @@ function handleBypass(){
                 Customer
               </InputLabel>
               <Select
-                  labelId="demo-simple-select-label"
-                  id="demo-simple-select"
-                  label="Customer"
-                  value={selectedCustomer}
-                  onChange={handleCustomerClick}
-                  sx={{ color: "black" }}
-                >
-                  {customerName.map((item) => (
-                    <MenuItem key={item} value={item}>
-                      {item}
-                    </MenuItem>
-                  ))}
-                </Select>
+                labelId="demo-simple-select-label"
+                id="demo-simple-select"
+                label="Customer"
+                value={selectedCustomer}
+                onChange={handleCustomerClick}
+                sx={{ color: "black" }}
+              >
+                {customerName.map((item) => (
+                  <MenuItem key={item} value={item}>
+                    {item}
+                  </MenuItem>
+                ))}
+              </Select>
             </FormControl>
           </Box>
         </div>
@@ -287,19 +285,19 @@ function handleBypass(){
                 Zone
               </InputLabel>
               <Select
-                  labelId="demo-simple-select-label"
-                  id="demo-simple-select"
-                  label="zone"
-                  value={selectedZone}
-                  onChange={handleZoneClick}
-                  sx={{ color: "black" }}
-                >
-                  {zone.map((item) => (
-                    <MenuItem key={item} value={item}>
-                      {item}
-                    </MenuItem>
-                  ))}
-                </Select>
+                labelId="demo-simple-select-label"
+                id="demo-simple-select"
+                label="zone"
+                value={selectedZone}
+                onChange={handleZoneClick}
+                sx={{ color: "black" }}
+              >
+                {zone.map((item) => (
+                  <MenuItem key={item} value={item}>
+                    {item}
+                  </MenuItem>
+                ))}
+              </Select>
             </FormControl>
           </Box>
         </div>
@@ -317,19 +315,19 @@ function handleBypass(){
                 Location
               </InputLabel>
               <Select
-                  labelId="demo-simple-select-label"
-                  id="demo-simple-select"
-                  label="Location"
-                  value={selectedLocation}
-                  onChange={handleLocationClick}
-                  sx={{ color: "black" }}
-                >
-                  {location.map((item) => (
-                    <MenuItem key={item} value={item}>
-                      {item}
-                    </MenuItem>
-                  ))}
-                </Select>
+                labelId="demo-simple-select-label"
+                id="demo-simple-select"
+                label="Location"
+                value={selectedLocation}
+                onChange={handleLocationClick}
+                sx={{ color: "black" }}
+              >
+                {location.map((item) => (
+                  <MenuItem key={item} value={item}>
+                    {item}
+                  </MenuItem>
+                ))}
+              </Select>
             </FormControl>
           </Box>
         </div>
@@ -344,19 +342,19 @@ function handleBypass(){
                 Gateway ID
               </InputLabel>
               <Select
-                  labelId="demo-simple-select-label"
-                  id="demo-simple-select"
-                  label="GatewayId"
-                  value={selectedGateway}
-                  onChange={handleGatewayClick}
-                  sx={{ color: "black" }}
-                >
-                  {gatewayID.map((item) => (
-                    <MenuItem key={item} value={item}>
-                      {item}
-                    </MenuItem>
-                  ))}
-                </Select>
+                labelId="demo-simple-select-label"
+                id="demo-simple-select"
+                label="GatewayId"
+                value={selectedGateway}
+                onChange={handleGatewayClick}
+                sx={{ color: "black" }}
+              >
+                {gatewayID.map((item) => (
+                  <MenuItem key={item} value={item}>
+                    {item}
+                  </MenuItem>
+                ))}
+              </Select>
             </FormControl>
           </Box>
         </div>
@@ -373,19 +371,19 @@ function handleBypass(){
                 Optimizer ID
               </InputLabel>
               <Select
-                  labelId="demo-simple-select-label"
-                  id="demo-simple-select"
-                  label="GatewayId"
-                  value={selectedoptimizerId}
-                  onChange={handleOptimizerClick}
-                  sx={{ color: "black" }}
-                >
-                  {optimizerId.map((item) => (
-                    <MenuItem key={item} value={item}>
-                      {item}
-                    </MenuItem>
-                  ))}
-                </Select>
+                labelId="demo-simple-select-label"
+                id="demo-simple-select"
+                label="GatewayId"
+                value={selectedoptimizerId}
+                onChange={handleOptimizerClick}
+                sx={{ color: "black" }}
+              >
+                {optimizerId.map((item) => (
+                  <MenuItem key={item} value={item}>
+                    {item}
+                  </MenuItem>
+                ))}
+              </Select>
             </FormControl>
           </Box>
         </div>
@@ -426,12 +424,8 @@ function handleBypass(){
               color: "whitesmoke",
             }}
           >
-     
-            <h4 style={{ color: "#555152" }}>{isOn ? 'OFF':'ON'}</h4>
-          
-           
+            <h4 style={{ color: "#555152" }}>{isOn ? "OFF" : "ON"}</h4>
           </div>
-        
         </div>
       </div>
     </>

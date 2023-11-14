@@ -134,7 +134,7 @@ function Graph() {
         OptimizerId: opti,
       });
       setupdatedOptimizer(response.data);
-      console.log("radhe",response.data);
+      // console.log("radhe",response.data);
       response.data.map((item, index) => {
         roomTemp.push(item.RoomTemperature);
       
@@ -159,7 +159,7 @@ function Graph() {
       
         ],
       });
-      console.log("what data   ", response.data);
+      // console.log("what data   ", response.data);
     };
     graphData();
   }, [opti]);
@@ -168,7 +168,7 @@ function Graph() {
   const[width, setWidth] = useState(
     "75%"
   )
-  console.log("Window size",window.innerHeight);
+  // console.log("Window size",window.innerHeight);
   useEffect(()=>{
     if(window.screen.width > 310 & window.screen.width<500){
       setWidth("70%")

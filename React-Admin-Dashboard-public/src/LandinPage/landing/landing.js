@@ -14,7 +14,7 @@ import Graph from "../landing/GraphHold";
 const Landing = () => {
   const [toShow, setToShow] = useState(cardsData);
   const opti = useSelector((state) => {
-    console.log("Graph        O", state.gatewayOptimizer.OptimizerId);
+    // console.log("Graph        O", state.gatewayOptimizer.OptimizerId);
     return state.gatewayOptimizer.OptimizerId;
   });
 

@@ -111,7 +111,7 @@ const Analytics = () => {
 
     const response = await axios.post(
       "http://3.106.217.161:5000/controlData",
-      // "http://localhost:1234/controlData",
+      // "http://localhost:5000/controlData",
 
       {
         // RESET: "",
@@ -128,10 +128,10 @@ const Analytics = () => {
         SteadyStateRoomTemperatureTolerance: inputText3,
         SteadyStateCoilTemperatureTolerance: inputText4,
         SteadyStateSamplingDuration: inputText5,
-        DeltaT: inputText6,
+        // DeltaT: inputText6,
         MinAirConditionerOffDuration: inputText7,
         AirConditionerOffDeclarationMinPeriod: inputText8,
-        GatewayUploadingRate: inputText9,
+        // GatewayUploadingRate: inputText9,
         thermostateInterval: inputText11,
         thermostateTimeIncrease: inputText12,
         // Flag:"1"
@@ -175,10 +175,10 @@ const Analytics = () => {
         SteadyStateRoomTemperatureTolerance: inputText3,
         SteadyStateCoilTemperatureTolerance: inputText4,
         SteadyStateSamplingDuration: inputText5,
-        DeltaT: inputText6,
+        // DeltaT: inputText6,
         MinAirConditionerOffDuration: inputText7,
         AirConditionerOffDeclarationMinPeriod: inputText8,
-        GatewayUploadingRate: inputText9,
+        // GatewayUploadingRate: inputText9,
         thermostateInterval: inputText11,
         thermostateTimeIncrease: inputText12,
         // Flag:"1"
@@ -283,7 +283,7 @@ const Analytics = () => {
             />
           </div>
         </div>
-        <div style={{ display: "flex", flexDirection: "row" }}>
+        {/* <div style={{ display: "flex", flexDirection: "row" }}>
           <div style={{ width: "50%" }}>
             <p>DeltaT</p>
           </div>
@@ -295,7 +295,7 @@ const Analytics = () => {
               placeholder="Enter text"
             />
           </div>
-        </div>
+        </div> */}
         <div style={{ display: "flex", flexDirection: "row" }}>
           <div style={{ width: "50%" }}>
             <p>MinAirConditionerOffDuration</p>
@@ -322,7 +322,7 @@ const Analytics = () => {
             />
           </div>
         </div>
-        <div style={{ display: "flex", flexDirection: "row" }}>
+        {/* <div style={{ display: "flex", flexDirection: "row" }}>
           <div style={{ width: "50%" }}>
             <p>GatewayUploadingRate</p>
           </div>
@@ -334,7 +334,7 @@ const Analytics = () => {
               placeholder="Enter text"
             />
           </div>
-        </div>
+        </div> */}
         <div style={{ display: "flex", flexDirection: "row" }}>
           <div style={{ width: "50%" }}>
             <p>MaxObservationTime</p>
